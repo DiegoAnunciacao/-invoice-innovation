@@ -13,4 +13,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :invoices do
+    get "services", on: :collection
+  end
+  resources :clients
 end

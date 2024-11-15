@@ -1,12 +1,14 @@
-.navbar-lewagon {
+.navbar-invoice {
+  padding: 1rem;
   justify-content: space-between;
   background: white;
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-invoice .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-invoice .navbar-brand {
   width: 40px;
 }
+

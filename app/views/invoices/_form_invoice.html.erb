@@ -1,0 +1,15 @@
+<div class="container">
+  <h1><%= @client.client_name %></h1>
+  <%= simple_form_for [@client, @invoice] do |f|%>
+
+    <%= f.input :notes, as: :text %>
+    <%= f.input :vat, as: :decimal %>
+
+    <% if current_page?(new_client_invoice_path)%>
+      <%= f.submit "Create Invoice", class: "btn btn-primary" %>
+    <% else %>
+      <%= f.submit "Update Invoice", class: "btn btn-primary" %>
+      <%= button_to "Delete Invoice", client_invoices_path(client_id: @client.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure ?"}, class: "btn btn-danger" %>
+    <% end %>
+  <% end %>
+</div>

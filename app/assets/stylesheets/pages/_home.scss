@@ -1,1 +1,23 @@
 // Specific CSS for your home-page
+.home{
+  background-color: #F0EEEB;
+  margin: 2rem;
+
+  img {
+    width: 100%;
+  }
+
+  #details-home {
+    padding-right: 5rem;
+
+    span {
+      font-size: 1.2rem;
+    }
+
+    h1{
+      padding-top: 2rem;
+      font-size: 4.4rem;
+    }
+  }
+
+}

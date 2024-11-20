@@ -20,7 +20,10 @@
   <body>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-
+    <% if current_page?(root_path) %>
+    <% else %>
+      <%= render "clients/partials/under_navbar" %>
+    <% end %>
     <%= yield %>
 
   </body>

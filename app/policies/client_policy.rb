@@ -9,7 +9,7 @@ class ClientPolicy < ApplicationPolicy
   end
 
   def show?
-    record.user_id == user.id
+    user_owns_record?
   end
 
   def create?
@@ -20,15 +20,21 @@ class ClientPolicy < ApplicationPolicy
     true
   end
 
-  def update?
-    record.user_id == user.id
+  def edit?
+    user_owns_record?
   end
 
-  def edit?
-    record.user_id == user.id
+  def update?
+    user_owns_record?
   end
 
   def destroy?
+    user_owns_record?
+  end
+
+  private
+
+  def user_owns_record?
     record.user_id == user.id
   end
 

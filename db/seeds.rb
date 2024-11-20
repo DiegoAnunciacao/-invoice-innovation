@@ -25,12 +25,12 @@ puts "creating Users, Clients, Invoices and Services"
 
   2.times do |c|
     client = Client.create!(
-      client_name: Faker::Name.name,
-      client_address: Faker::Address.street_address,
-      client_county: Faker::Address.city,
-      client_email: Faker::Internet.unique.email,
-      client_postcode: Faker::Address.postcode,
-      client_phone: Faker::PhoneNumber,
+      name: Faker::Name.name,
+      address: Faker::Address.street_address,
+      county: Faker::Address.city,
+      email: Faker::Internet.unique.email,
+      postcode: Faker::Address.postcode,
+      phone: Faker::PhoneNumber,
       user: user
       )
 

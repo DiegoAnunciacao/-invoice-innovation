@@ -1,9 +1,29 @@
 <div class="container">
-  <h1><%= @client.client_name %></h1>
+  <div class="mt-3">
+    <h1><%= @client.name %></h1>
+    <p>Address: <%= @client.address %></p>
+    <p>County: <%= @client.county %></p>
+    <p>Postcode <%= @client.postcode %></p>
+    <p>Email: <%= @client.email %></p>
+    <p>Phone Number: <%= @client.phone %></p>
+  </div>
+
   <%= simple_form_for [@client, @invoice] do |f|%>
 
-    <%= f.input :notes, as: :text %>
+      <h3 class="text-xl mt-4">Service</h3>
+      <div class="my-2" data-controller="nested-rondo" data-nested-rondo-field-class-value="service-field">
+        <div data-nested-rondo-target="fieldContain">
+          <%= f.simple_fields_for :services do |service| %>
+            <%= render "service_fields", f: service %>
+          <% end %>
+        </div>
+        <div class="links">
+          <%= link_to_add_association "Add Service", f, :services %>
+        </div>
+      </div>
+
     <%= f.input :vat, as: :decimal %>
+    <%= f.input :notes, as: :text %>
 
     <% if current_page?(new_client_invoice_path)%>
       <%= f.submit "Create Invoice", class: "btn btn-primary" %>

@@ -1,10 +1,14 @@
 class ClientsController < ApplicationController
+  before_action :authenticate_user!
+  after_action :verify_authorized, except: :index
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+
   def index
-    @clients = Client.where(user: current_user)
+    @clients = current_user.clients
   end
 
   def show
+    @clients = current_user.clients
     authorize @client
   end
 
@@ -18,7 +22,7 @@ class ClientsController < ApplicationController
     @client.user = current_user
     authorize @client
     if @client.save
-      redirect_to clients_path, notice: 'Client created'
+      redirect_to client_path(@client), notice: 'Client created'
     else
       render :new
     end
@@ -50,7 +54,7 @@ class ClientsController < ApplicationController
   end
 
   def clients_params
-    params.require(:client).permit(:client_name, :client_address, :client_county, :client_email, :client_postcode, :client_phone)
+    params.require(:client).permit(:name, :address, :county, :email, :postcode, :phone)
   end
 
 end

@@ -1,5 +1,11 @@
-<div class="list-group">
+<div class="list-group"  data-controller="clients-list" >
   <% clients.each do |client| %>
-    <%= link_to client.name, client, class: "list-group-item list-group-item-action" %>
+    <%= link_to client.name, client,
+      class: "#{'active' if client == selected_client} list-group-item list-group-item-action",
+      data: {
+        turbo_frame: :client_details,
+        turbo_action: :advance,
+        action: "click->clients-list#highlight",
+        clients_list_target: "client"} %>
   <% end %>
 </div>

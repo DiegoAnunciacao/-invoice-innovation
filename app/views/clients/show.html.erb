@@ -1,6 +1,6 @@
-  <h1>Clients</h1>
-  <div class="clients-grid mt-2">
-    <%= render 'clients/partials/list', clients: @clients %>
-    <%= render 'clients/partials/details', client: @client %>
-  </div>
 
+<div class="clients-grid mt-4">
+  <%= render 'clients/partials/list', clients: @clients, selected_client: @client %>
+  <%= render 'clients/partials/details', client: @client %>
+
+</div>

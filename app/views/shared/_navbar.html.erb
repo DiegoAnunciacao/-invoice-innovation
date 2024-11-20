@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-invoice">
   <div class="container-fluid">
-    <%= link_to clients_path, class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <h3 class="audiowide">INVOICE <span>Innovation</span></h3>
     <% end %>
 
@@ -11,14 +11,21 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item dropdown">
-          <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-          </a>
+          <li class="nav-item dropdown d-flex align-items-center">
+            <div class="dashboard-navbar">
+              <%= link_to "Dashboard", clients_path, class: "px-2" %>
+            </div>
+
+            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+            </a>
+
+
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
+
         <% else %>
           <li class="nav-item">
             <%= link_to "Login", new_user_session_path, class: "nav-link audiowide" %>

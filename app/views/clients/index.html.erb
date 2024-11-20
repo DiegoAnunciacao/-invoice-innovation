@@ -1,13 +1,4 @@
-<div class="d-flex align-items-center">
-    <h1>Clients</h1>
-    <div>
-      <%= link_to "New Client", new_client_path, class: "btn btn-primary" %>
-    </div>
-
-</div>
-
-<div class="clients-grid mt-2">
-  <%= render 'clients/partials/list', clients: @clients %>
-  <div class="text-secondary">Select a client to view details</div>
-
+<div class="clients-grid mt-4">
+  <%= render 'clients/partials/list', clients: @clients, selected_client: nil %>
+  <div class="text-secondary">Select a contact to view details</div>
 </div>

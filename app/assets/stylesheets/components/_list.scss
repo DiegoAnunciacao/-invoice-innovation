@@ -1,7 +1,7 @@
 .clients-grid {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  height: 100vh;
+  height: 80vh;
 
   > * {
     overflow-y: auto;
@@ -15,4 +15,5 @@
     background-color: #f9f9f9;
     padding: 1rem;
   }
+
 }

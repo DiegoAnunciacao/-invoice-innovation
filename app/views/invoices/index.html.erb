@@ -1,1 +1,8 @@
-<h1>ALL INVOICES</h1>
+<div class="container">
+  <h1>ALL INVOICES</h1>
+  <% @invoices.each do |invoice| %>
+    <p>Invoice: <%= invoice.id %> --> <%= invoice.client.name %></p>
+    <%= link_to "Delete Invoice", client_invoice_path(client_id: invoice.client.id, id: invoice.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    
+  <% end %>
+</div>

@@ -22,12 +22,12 @@ class InvoicePolicy < ApplicationPolicy
     true
   end
 
-  def update?
+  def edit?
     user_client = Client.where(id: record.client_id, user_id: user.id)
     user_client.present?
   end
 
-  def edit?
+  def update?
     user_client = Client.where(id: record.client_id, user_id: user.id)
     user_client.present?
   end
@@ -35,6 +35,12 @@ class InvoicePolicy < ApplicationPolicy
   def destroy?
     user_client = Client.where(id: record.client_id, user_id: user.id)
     user_client.present?
+  end
+
+  private
+
+  def user_owns_record?
+    record.user_id == user.id
   end
 
   class Scope < ApplicationPolicy::Scope

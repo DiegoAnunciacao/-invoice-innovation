@@ -1,0 +1,15 @@
+<div class="container">
+  <%= simple_form_for @client do |f|%>
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :county %>
+    <%= f.input :email %>
+    <%= f.input :postcode %>
+    <%= f.input :phone %>
+    <% if current_page?(new_client_path)%>
+      <%= f.submit "Create Client", class: "btn btn-primary" %>
+      <% else %>
+        <%= f.submit "Update Client", class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
+</div>

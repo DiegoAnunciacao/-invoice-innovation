@@ -1,0 +1,5 @@
+<div class="list-group">
+  <% clients.each do |client| %>
+    <%= link_to client.name, client, class: "list-group-item list-group-item-action" %>
+  <% end %>
+</div>

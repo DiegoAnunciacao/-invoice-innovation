@@ -44,7 +44,7 @@ class ClientsController < ApplicationController
   def destroy
     authorize @client
     @client.destroy
-    redirect_to clients_path
+    redirect_to clients_path, notice: "Client destroyed"
   end
 
   private

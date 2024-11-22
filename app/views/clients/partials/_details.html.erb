@@ -9,7 +9,7 @@
     <p><%= client.email %></p>
 
 
-    <%= link_to edit_client_path(client) do %>
+    <%= link_to edit_client_path(client), target: "_top" do %>
       <span class="visually-hidden">Edit</span>
       <i class="fas fa-edit"></i>
     <% end %>
@@ -23,7 +23,7 @@
       <i class="fa-solid fa-trash"></i>
     <% end %>
 
-    <%= link_to new_client_invoice_path(client.id) do %>
+    <%= link_to new_client_invoice_path(client), target: "_top" do %>
       <span class="visually-hidden">New Invoice</span>
       <i class="fa-solid fa-file"></i>
     <% end %>

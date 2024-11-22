@@ -15,10 +15,9 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :clients do
-    resources :invoices do
-      get "services", on: :collection
-    end
+    resources :invoices, only: [:new, :create]
   end
 
+  resources :invoices, only: [:index, :edit, :update, :show, :destroy]
 
 end

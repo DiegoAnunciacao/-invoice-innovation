@@ -2,7 +2,7 @@
 
   <% @invoices.each do |invoice| %>
     <p>Invoice: <%= invoice.id %> --> <%= invoice.client.name %></p>
-    <%= link_to "Delete Invoice", client_invoice_path(client_id: invoice.client.id, id: invoice.id), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    <%= link_to "Delete Invoice", invoice_path(invoice), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
 
   <% end %>
 </div>

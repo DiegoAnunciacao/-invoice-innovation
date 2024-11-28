@@ -4,7 +4,11 @@
 @import "form_legend_clear";
 @import "navbar";
 @import "list";
-
+@import "invoice";
+@import "details";
+@import "sidebar";
+@import "footer";
+@import "login";
 
 h1, h2, h3, h4, h5 {
   margin: 0;
@@ -19,5 +23,10 @@ a {
 }
 
 body {
-  background-color: #FBF8F5;
+  margin: 5rem;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: 100%
 }

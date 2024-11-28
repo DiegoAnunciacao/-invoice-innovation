@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-md-4 align-items-center mb-3">
+    <div>
+      <h5 class="audiowide">CLIENT LIST<span class="text-muted fw-normal ms-2">(<%= @clients.size %>)</span></h5>
+    </div>
+    <div class="mt-2">
+        <%= form_with url: clients_path, method: :get, class: "d-flex" do %>
+          <%= text_field_tag :query,
+                params[:query],
+                class: "form-control",
+                placeholder: "Type a keyword"
+            %>
+          <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+        <% end %>
+    </div>
+  </div>
+
+  <div class="col-md-8 align-content-center">
+      <div class="d-flex flex-wrap align-items-center justify-content-end gap-2">
+        <%= link_to "New Client", new_client_path, class: "btn btn-primary" %>
+      </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="table-responsive">
+        <table class="table project-list-table table-nowrap align-middle table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Postcode</th>
+                    <th class="text-center" scope="col" style="width: 200px;">Create Invoice</th>
+                </tr>
+            </thead>
+
+          <tbody>
+            <% @clients.each do |client| %>
+              <tr>
+                <td>
+                  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-sm rounded-circle me-2" />
+                  <%= link_to client.name.titleize, client_path(client), class: "text-body" %>
+                </td>
+                <td><span class="mb-0"><%= client.phone %></span></td>
+                <td><%= client.email %></td>
+                <td><%= client.postcode %></td>
+                <td>
+                  <ul class="list-inline mb-0 text-center">
+                    <li class="list-inline-item">
+                      <%= link_to new_client_invoice_path(client), title: "New Invoice" do %>
+                          <i class="fa-solid fa-file-invoice badge-soft-primary"></i>
+                      <% end %>
+                    </li>
+                  </ul>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    </div>
+  </div>
+</div>

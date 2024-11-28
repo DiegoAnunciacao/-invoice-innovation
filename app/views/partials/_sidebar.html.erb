@@ -1,0 +1,60 @@
+<div class="wrapper" data-controller="sidebar">
+  <aside id="sidebar" data-sidebar-target="toggle">
+    <div class="d-flex">
+      <button id="toggle-btn" type="button" data-action="click->sidebar#highlight">
+        <i class="fa-solid fa-table-cells-large"></i>
+      </button>
+      <div class="sidebar-logo">
+        <a href="#" class="audiowide">INVOICE</a>
+      </div>
+    </div>
+      <ul class="sidebar-nav ">
+      <% if user_signed_in? %>
+      
+        <li class="sidebar-item">
+          <%= link_to workspace_path, class: "sidebar-link" do %>
+            <i class="fa-solid fa-house"></i>
+            <span>Workspace</span>
+          <% end %>
+        </li>
+
+        <li class="sidebar-item">
+          <%= link_to edit_user_registration_path, class: "sidebar-link" do %>
+            <i class="fa-solid fa-user"></i>
+            <span>Profile</span>
+          <% end %>
+        </li>
+
+        <li class="sidebar-item">
+          <%= link_to clients_path, class: "sidebar-link" do %>
+            <i class="fa-solid fa-users"></i>
+            <span>Clients</span>
+          <% end %>
+        </li>
+
+        <li class="sidebar-item">
+          <%= link_to invoices_path, class:"sidebar-link" do %>
+            <i class="fa-solid fa-file-invoice"></i>
+            <span>Invoices</span>
+          <% end %>
+        </li>
+
+        <li class="sidebar-item">
+          <%= link_to destroy_user_session_path, data: {turbo_method: :delete}, class:"sidebar-link" do %>
+            <i class="fa-solid fa-right-from-bracket"></i>
+            <span>Log Out</span>
+          <% end %>
+        </li>
+
+      <% else %>
+          <li class="sidebar-item">
+          <%= link_to new_user_session_path, class:"sidebar-link" do  %>
+            <i class="fa-solid fa-right-to-bracket"></i>
+            <span>Log In</span>
+          <% end %>
+          </li>
+      </ul>
+    <% end %>
+  </aside>
+
+</div>

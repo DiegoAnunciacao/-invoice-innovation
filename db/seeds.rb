@@ -20,7 +20,7 @@ puts "creating Users, Clients, Invoices and Services"
     company_name: Faker::Company.name,
     company_address: Faker::Address.street_address,
     company_number: Faker::Company.brazilian_company_number,
-    image_logo: Faker::Company.logo
+    image_logo: Faker::Avatar.image
   )
 
   2.times do |c|
@@ -30,18 +30,18 @@ puts "creating Users, Clients, Invoices and Services"
       county: Faker::Address.city,
       email: Faker::Internet.unique.email,
       postcode: Faker::Address.postcode,
-      phone: Faker::PhoneNumber,
+      phone: Faker::PhoneNumber.phone_number,
       user: user
       )
 
-      2.times do |i|
+      10.times do |i|
         invoice = Invoice.create!(
         notes: "this is a note",
         vat: rand(12..20),
         client: client
         )
 
-        2.times do |s|
+        5.times do |s|
           Service.create!(
             description: "This is a description",
             amount: rand(10..1000),

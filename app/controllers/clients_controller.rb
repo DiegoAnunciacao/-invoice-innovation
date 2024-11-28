@@ -5,6 +5,10 @@ class ClientsController < ApplicationController
 
   def index
     @clients = current_user.clients
+    if params[:query].present?
+      sql_subquery = "name ILIKE :query OR email ILIKE :query"
+      @clients = @clients.where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def show
@@ -35,7 +39,7 @@ class ClientsController < ApplicationController
   def update
     authorize @client
     if @client.update(clients_params)
-      redirect_to clients_path, notice: "Client updated"
+      redirect_to client_path(@client), notice: "Client updated"
     else
       render :edit
     end

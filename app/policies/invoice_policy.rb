@@ -10,8 +10,7 @@ class InvoicePolicy < ApplicationPolicy
   end
 
   def show?
-    user_client = Client.where(id: record.client_id, user_id: user.id)
-    user_client.present?
+    user_owns_record?
   end
 
   def create?
@@ -23,24 +22,21 @@ class InvoicePolicy < ApplicationPolicy
   end
 
   def edit?
-    user_client = Client.where(id: record.client_id, user_id: user.id)
-    user_client.present?
+    user_owns_record?
   end
 
   def update?
-    user_client = Client.where(id: record.client_id, user_id: user.id)
-    user_client.present?
+    user_owns_record?
   end
 
   def destroy?
-    user_client = Client.where(id: record.client_id, user_id: user.id)
-    user_client.present?
+    user_owns_record?
   end
 
   private
 
   def user_owns_record?
-    record.user_id == user.id
+    record.client.user == user
   end
 
   class Scope < ApplicationPolicy::Scope

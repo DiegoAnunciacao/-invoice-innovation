@@ -1,0 +1,32 @@
+.invoice {
+  margin-top: 3rem;
+  padding: 5rem;
+  border: .1rem solid #DEE2E6;
+  border-radius: 1rem;
+
+  p {
+    border: .1rem solid #DEE2E6;
+    border-radius: 1rem;
+    padding: .5rem 1rem .5rem 1rem;
+
+  }
+
+  h4, h5 {
+    font-weight: 600;
+  }
+
+  .client-details, .vat-notes {
+    margin-top: 4rem;
+  }
+
+  .services {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+}
+
+#destroy-btn {
+  padding-top: .7rem;
+  text-align: right;
+}

@@ -1,0 +1,80 @@
+.login-main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 50rem;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 3.75rem;
+
+  h2 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+  }
+
+  a {
+    color: #116dff;
+    cursor: pointer;
+  }
+
+  a:hover {
+    color: #3899ec;
+    transition: .2s;
+  }
+}
+
+.login-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  .g-access {
+    div {
+      width: 32%;
+      border-top: 1px solid #8c8d8d;
+    }
+
+    span {
+      color: #8c8d8d;
+      margin: 0;
+      padding: 0;
+      margin-bottom: 1rem;
+    }
+  }
+
+  span{
+    color: white;
+    text-align: center;
+    flex: 1;
+    font-size: .9rem;
+    padding: 0 2rem 0px 1rem;
+  }
+
+  .google-signin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    border: 1px solid #1a73e8;
+    background-color: #1a73e8; /* Branco para combinar com o estilo Google */
+    cursor: pointer;
+    gap: 1rem;
+    text-decoration: none;
+    overflow: hidden;
+  }
+
+  .google-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    padding: .6rem;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+
+  }
+}

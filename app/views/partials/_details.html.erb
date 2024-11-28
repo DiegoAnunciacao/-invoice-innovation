@@ -1,0 +1,70 @@
+<div class="row ">
+  <div class="col-md-4">
+    <div class="col card h-100">
+      <div class="card-body align-content-center">
+        <div class="account-settings">
+          <div class="user-profile">
+            <div class="user-avatar">
+              <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Maxwell Admin">
+            </div>
+            <h5 class="user-name"><%= @client.name.titleize %></h5>
+            <h6 class="user-email"><%= @client.email %></h6>
+          </div>
+          <div class="about">
+            <ul class="list-inline mb-0">
+              <li class="list-inline-item">
+                <%= link_to "",  edit_client_path(client), class: "fa-regular fa-pen-to-square badge-soft-primary", title: "Edit Client" %>
+              </li>
+              <li class="list-inline-item">
+                <%= link_to "", client_path(client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa-regular fa-circle-xmark badge-soft-danger", title: "Delete Client" %>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8">
+    <div class="card h-100">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-6">
+          <%= simple_form_for client do |f| %>
+            <div class="form-group">
+              <%= f.input :name, disabled: true %>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group">
+              <%= f.input :email, disabled: true %>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group">
+              <%= f.input :phone, disabled: true %>
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group">
+              <%= f.input :address, disabled: true %>
+            </div>
+          </div>
+
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group">
+              <%= f.input :county, disabled: true %>
+            </div>
+          </div>
+          <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-12">
+            <div class="form-group">
+              <%= f.input :postcode, disabled: true %>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,14 @@
 .navbar-invoice {
-  padding: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   justify-content: space-between;
   background: white;
+  border-bottom: 1px solid #F4F4F4 ;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
 }
 
 .navbar-invoice .navbar-collapse {

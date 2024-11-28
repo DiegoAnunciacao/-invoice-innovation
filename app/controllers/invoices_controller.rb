@@ -1,10 +1,14 @@
 class InvoicesController < ApplicationController
   before_action :set_invoice, only: %i[show edit update destroy]
-  before_action :set_client, only: %i[new edit create]
+  before_action :set_client, only: %i[new create]
   after_action :verify_authorized, except: :index
 
   def index
     @invoices = Invoice.includes(:client).where(clients: { user_id: current_user.id })
+    if params[:query].present?
+      sql_subquery = "name ILIKE :query OR email ILIKE :query"
+        @invoices = @invoices.where(sql_subquery, query: "%#{params[:query]}%")
+    end
   end
 
   def show
@@ -21,7 +25,7 @@ class InvoicesController < ApplicationController
     @invoice.client_id = params[:client_id]
     authorize @invoice
     if @invoice.save
-      redirect_to client_invoices_path(client_id: @invoice.client_id), notice: "Invoice created"
+      redirect_to invoices_path, notice: "Invoice created"
     else
       render :new
     end
@@ -34,7 +38,7 @@ class InvoicesController < ApplicationController
   def update
     authorize @invoice
     if @invoice.update(invoice_params)
-      redirect_to client_invoices_path(client_id: @invoice.client_id), notice: "Invoice updated"
+      redirect_to invoices_path, notice: "Invoice updated"
     else
       render :edit
     end
@@ -42,9 +46,8 @@ class InvoicesController < ApplicationController
 
   def destroy
     authorize @invoice
-    client_id = @invoice.client_id
     @invoice.destroy
-    redirect_to client_invoices_path(client_id: client_id), notice: "Invoice deleted"
+    redirect_to invoices_path, notice: "Invoice deleted"
   end
 
   private
@@ -58,6 +61,6 @@ class InvoicesController < ApplicationController
   end
 
   def invoice_params
-    params.require(:invoice).permit(:vat, :notes, services_attributes: %i[description amount _destroy id])
+    params.require(:invoice).permit(:vat, :notes, services_attributes: %i[description amount id])
   end
 end

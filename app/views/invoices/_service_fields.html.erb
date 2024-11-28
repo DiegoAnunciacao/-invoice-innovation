@@ -1,14 +1,11 @@
 <div class="service-field">
-  <div class="row">
-    <div class="col-8">
-      <%= f.input :description %>
+  <div class="row justify-content-between">
+    <div class="col-md-8">
+      <%= f.input :description, label: false, placeholder: "Service Description" %>
     </div>
-    <div class="col-2">
-      <%= f.input :amount %>
+    <div class="col-md-3 d-flex">
+      <%= f.input :amount, label: false, placeholder: "Amount" %>
+      <%= link_to_remove_association "", f, id: "destroy-btn", class: "fa-solid fa-trash col-md-2 badge-soft-danger" %>
     </div>
-    <div class="col-2 align-content-center">
-      <%= link_to_remove_association "", f, class: "fa-solid fa-trash col-2" %>
-    </div>
-
   </div>
 </div>

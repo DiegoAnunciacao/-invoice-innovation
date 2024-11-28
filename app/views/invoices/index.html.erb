@@ -1,8 +1,5 @@
 <div class="container">
-
-  <% @invoices.each do |invoice| %>
-    <p>Invoice: <%= invoice.id %> --> <%= invoice.client.name %></p>
-    <%= link_to "Delete Invoice", invoice_path(invoice), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-
-  <% end %>
+  <div class="mt-4">
+    <%= render 'partials/invoice_list' %>
+  </div>
 </div>

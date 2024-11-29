@@ -10,7 +10,7 @@
 
 puts "creating Users, Clients, Invoices and Services"
 
-5.times do |u|
+10.times do |u|
   user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -23,7 +23,7 @@ puts "creating Users, Clients, Invoices and Services"
     image_logo: Faker::Avatar.image
   )
 
-  2.times do |c|
+  5.times do |c|
     client = Client.create!(
       name: Faker::Name.name,
       address: Faker::Address.street_address,
@@ -35,19 +35,20 @@ puts "creating Users, Clients, Invoices and Services"
       )
 
       10.times do |i|
-        invoice = Invoice.create!(
+        invoice = Invoice.new(
         notes: "this is a note",
         vat: rand(12..20),
         client: client
         )
-
-        5.times do |s|
+       
+        2.times do |s|
           Service.create!(
             description: "This is a description",
             amount: rand(10..1000),
             invoice: invoice
           )
         end
+        invoice.save
       end
     end
   end

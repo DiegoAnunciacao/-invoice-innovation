@@ -16,7 +16,7 @@
                 <%= link_to "",  edit_client_path(client), class: "fa-regular fa-pen-to-square badge-soft-primary", title: "Edit Client" %>
               </li>
               <li class="list-inline-item">
-                <%= link_to "", client_path(client), data: { turbo_method: :delete, turbo_confirm: "Are you sure?"}, class: "fa-regular fa-circle-xmark badge-soft-danger", title: "Delete Client" %>
+                <%= link_to "", client_path(client), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this client? This action cannot be undone."}, class: "fa-regular fa-circle-xmark badge-soft-danger", title: "Delete Client" %>
               </li>
             </ul>
           </div>

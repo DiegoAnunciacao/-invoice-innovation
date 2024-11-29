@@ -1,27 +1,29 @@
-<div class="row align-items-center justify-content-center">
-  <div class="col-md-6 col-12 mb-3">
-    <div class="text-center">
-      <h5 class="audiowide">CLIENT LIST<span class="text-muted fw-normal ms-2">(<%= @clients.size %>)</span></h5>
-    </div>
 
-    <div class="row mt-2 align-items-center justify-content-center">
-        <%= form_with url: clients_path, method: :get, class: "d-flex" do %>
-          <%= text_field_tag :query,
-                params[:query],
-                class: "form-control",
-                placeholder: "Type a keyword"
-            %>
-          <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-        <% end %>
-    </div>
+<div class="row row-cols-2 row-cols-lg-12 align-items-center justify-content-center mb-3">
+  <div class="col text-start">
+    <h5 class="audiowide">CLIENT LIST<span class="text-muted fw-normal ms-2">(<%= @clients.size %>)</span></h5>
   </div>
-
-  <div class="row align-content-center">
-      <div class="d-flex flex-wrap align-items-center justify-content-end gap-2">
-        <%= link_to "New Client", new_client_path, class: "btn btn-primary" %>
-      </div>
+  <div class="col text-end">
+    <%= link_to "New Client", new_client_path, class: "btn btn-primary" %>
   </div>
 </div>
+
+
+
+<div class="row mt-2 align-items-center justify-content-center">
+  <div class="col-md-6 col-12">
+    <%= form_with url: clients_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Type a keyword"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
+
+
 
 <div class="row">
   <div class="col-md-12">
@@ -41,7 +43,6 @@
             <% @clients.each do |client| %>
               <tr>
                 <td>
-                  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="avatar-sm rounded-circle me-2" />
                   <%= link_to client.name.titleize, client_path(client), class: "text-body" %>
                 </td>
                 <td><span class="mb-0"><%= client.phone %></span></td>

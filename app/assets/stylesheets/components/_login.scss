@@ -1,9 +1,6 @@
 .login-main {
   display: flex;
   flex-direction: column;
-  width: 100%;
-  max-width: 50rem;
-  align-items: center;
   text-align: center;
   margin-bottom: 3.75rem;
 
@@ -17,22 +14,15 @@
     cursor: pointer;
   }
 
-  a:hover {
-    color: #3899ec;
-    transition: .2s;
-  }
 }
 
 .login-body {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 
   .g-access {
     div {
       width: 32%;
       border-top: 1px solid #8c8d8d;
+      margin: 0.5rem 0;
     }
 
     span {
@@ -52,9 +42,6 @@
   }
 
   .google-signin {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 0;
     border: 1px solid #1a73e8;
     background-color: #1a73e8; /* Branco para combinar com o estilo Google */
@@ -65,9 +52,6 @@
   }
 
   .google-logo {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     background-color: white;
     padding: .6rem;
 

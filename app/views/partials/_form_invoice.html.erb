@@ -1,84 +1,69 @@
-<section class="invoice">
-  <header class="row justify-content-between align-content-center">
-    <div class="col-lg-10">
+<section class="invoice row align-items-center justify-content-center mb-3">
+  <header class="row g-3">
+    <div class="col-md-10 col-12">
       <h4 class="mb-2">Invoice to</h4>
-      <h2><%= client.name.titleize %></h2>
+      <h2><%= client.name.squish.titleize %></h2>
     </div>
-    <div class="col-lg-2">
-      <div class="col-lg-12">
+    <div class="col-md-2 col-12">
+      <div>
         <h5 class="mb-2">Issue Date</h5>
         <p><%= Date.today %></p>
       </div>
-      <div class="col-lg-12">
+      <div>
         <h5 class="mb-2">Employee</h5>
-        <p>Natalie Machado</p>
+        <p class="form-control">Natalie Machado</p>
       </div>
     </div>
   </header>
 
-  <main class="row justify-content-between">
-
-    <div class="col-lg-6">
+  <main class="row align-items-start g-3">
+    <div class="col-md-6 col-12">
       <h5 class="mb-2">Address</h5>
-      <p><%= client.address.titleize %></p>
+      <p><%= client.address.squish.titleize %></p>
+      <div class="row g-3">
+        <div class="col-md-4 col-12">
+          <h5 class="mb-2">Postcode</h5>
+          <p><%= client.postcode.squish %></p>
+        </div>
+        <div class="col-md-8 col-12 text-wrap">
+          <h5 class="mb-2">Email</h5>
+          <p><%= client.email.squish %></p>
+        </div>
+      </div>
     </div>
-
-    <div class="col-lg-3">
+    <div class="col-md-4 col-12">
       <h5 class="mb-2">County</h5>
-      <p><%= client.county %></p>
-    </div>
-
-    <div class="col-lg-3">
-      <h5 class="mb-2">Postcode</h5>
-      <p><%= client.postcode %></p>
-    </div>
-
-    <div class="col-lg-6">
-      <h5 class="mb-2">Email</h5>
-      <p id="email"><%= client.email %></p>
-    </div>
-
-    <div class="col-lg-3">
-      <h5 class="mb-2">Phone Number</h5>
-      <p id="phone"><%= client.phone %></p>
+      <p><%= client.county.squish.titleize %></p>
     </div>
   </main>
 
-    <div class="row justify-content-between">
-      <%= simple_form_for [@client, @invoice], html: { data: { turbo: false }} do |f|%>
-        <span class="text-danger"><%= @invoice.errors[:base].first if @invoice.errors[:base].any? %></span>
-          <h4 class="services text-xl">Services</h4>
+  <div class="row g-3">
+    <%= simple_form_for [@client, @invoice], html: { data: { turbo: false } } do |f| %>
+      <span class="text-danger"><%= @invoice.errors[:base].first if @invoice.errors[:base].any? %></span>
 
-          <div data-controller="nested-rondo" data-nested-rondo-field-class-value="service-field">
-
-            <div data-nested-rondo-target="fieldContain">
-              <%= f.simple_fields_for :services do |service| %>
-                <%= render "service_fields", f: service %>
-              <% end %>
-            </div>
-
-            <div class="links">
-              <%= link_to_add_association "Add Service", f, :services, class: "btn btn-primary" %>
-            </div>
-          </div>
-
-        <div class="row vat-notes justify-content-between">
-          <div class="col-lg-8">
-            <%= f.input :notes, as: :text %>
-          </div>
-
-          <div class="col-lg-3">
-            <%= f.input :campo_virtual, label: "Subtotal" %>
-            <%= f.input :vat, as: :decimal %>
-            <%= f.input :campo_virtual, label: "TOTAL" %>
-
-            <% if @invoice.new_record? %>
-              <%= f.submit "Create Invoice", class: "btn btn-primary vat-notes w-100" %>
-            <% else @invoice.client.id? %>
-              <%= f.submit "Update Invoice", class: "btn btn-primary vat-notes w-100" %>
-            <% end %>
-          </div>
+      <h4 class="services text-xl">Services</h4>
+      <div data-controller="nested-rondo" data-nested-rondo-field-class-value="service-field">
+        <div data-nested-rondo-target="fieldContain">
+          <%= f.simple_fields_for :services do |service| %>
+            <%= render "service_fields", f: service %>
+          <% end %>
         </div>
-      <% end %>
-    </div>
+        <div class="links">
+          <%= link_to_add_association "Add Service", f, :services, class: "btn btn-primary" %>
+        </div>
+      </div>
+
+      <div class="row vat-notes g-3">
+        <div class="col-lg-8 col-12">
+          <%= f.input :notes, as: :text, label: "Notes" %>
+        </div>
+        <div class="col-lg-4 col-12">
+          <%= f.input :campo_virtual, label: "Subtotal" %>
+          <%= f.input :vat, as: :decimal %>
+          <%= f.input :campo_virtual, label: "TOTAL" %>
+          <%= f.submit @invoice.new_record? ? "Create Invoice" : "Update Invoice", class: "btn btn-primary w-100 mt-2" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
 </section>

@@ -1,29 +1,27 @@
 <div class="row align-items-center">
-  <div class="col-lg-12">
-    <div class="mb-3">
-       <% if current_page?(new_client_path)%>
-          <h5 class="audiowide text-center">NEW CLIENT<span class="text-muted fw-normal ms-2"></h5>
-          <% else %>
-          <h5 class="audiowide text-center">EDIT CLIENT<span class="text-muted fw-normal ms-2"></h5>
-        <% end %>
-    </div>
-  </div>
-  <div class="row mt-4 justify-content-center">
-    <div class="col-lg-4">
-      <%= simple_form_for client do |f|%>
-        <%= f.input :name %>
-        <%= f.input :address %>
-        <%= f.input :county %>
-        <%= f.input :postcode %>
-        <%= f.input :email %>
-        <%= f.input :phone %>
-
-        <% if current_page?(new_client_path)%>
-          <%= f.submit "Create Client", class: "btn btn-primary w-100" %>
-          <% else %>
-            <%= f.submit "Update Client", class: "btn btn-primary w-100" %>
-        <% end %>
+  <div class="mb-3">
+      <% if current_page?(new_client_path)%>
+        <h5 class="audiowide title-form text-center">NEW CLIENT</h5>
+        <% else %>
+        <h5 class="audiowide title-form text-center">EDIT CLIENT</h5>
       <% end %>
-    </div>
+  </div>
+</div>
+<div class="row mt-4 align-items-center justify-content-center">
+  <div class="col-md-6 col-12">
+    <%= simple_form_for client do |f|%>
+      <%= f.input :name %>
+      <%= f.input :address %>
+      <%= f.input :county %>
+      <%= f.input :postcode %>
+      <%= f.input :email %>
+      <%= f.input :phone %>
+
+      <% if current_page?(new_client_path)%>
+        <%= f.submit "Create Client", class: "btn btn-primary w-100" %>
+        <% else %>
+          <%= f.submit "Update Client", class: "btn btn-primary w-100" %>
+      <% end %>
+    <% end %>
   </div>
 </div>

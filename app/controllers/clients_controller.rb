@@ -26,7 +26,7 @@ class ClientsController < ApplicationController
     @client.user = current_user
     authorize @client
     if @client.save
-      redirect_to client_path(@client), notice: 'Client created'
+      redirect_to client_path(@client), notice: 'Client successful created'
     else
       render :new
     end
@@ -39,7 +39,7 @@ class ClientsController < ApplicationController
   def update
     authorize @client
     if @client.update(clients_params)
-      redirect_to client_path(@client), notice: "Client updated"
+      redirect_to client_path(@client), notice: "Client successful updated"
     else
       render :edit
     end
@@ -48,7 +48,7 @@ class ClientsController < ApplicationController
   def destroy
     authorize @client
     @client.destroy
-    redirect_to clients_path, notice: "Client destroyed"
+    redirect_to clients_path, notice: "Client successful deleted"
   end
 
   private

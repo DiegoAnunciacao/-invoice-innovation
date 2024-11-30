@@ -16,10 +16,12 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
   font-style: normal;
 }
 
-.roboto {
-  font-family: "Roboto", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+body {
+  .display-4 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
 }
 
 

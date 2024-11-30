@@ -31,7 +31,7 @@ class InvoicesController < ApplicationController
     @invoice.client_id = params[:client_id]
     authorize @invoice
     if @invoice.save
-      redirect_to invoices_path, notice: "Invoice created"
+      redirect_to invoices_path, notice: "Invoice successful created"
     else
       render :new
     end
@@ -44,7 +44,7 @@ class InvoicesController < ApplicationController
   def update
     authorize @invoice
     if @invoice.update(invoice_params)
-      redirect_to invoices_path, notice: "Invoice updated"
+      redirect_to invoices_path, notice: "Invoice successful updated"
     else
       render :edit
     end
@@ -53,7 +53,7 @@ class InvoicesController < ApplicationController
   def destroy
     authorize @invoice
     @invoice.destroy
-    redirect_to invoices_path, notice: "Invoice deleted"
+    redirect_to invoices_path, notice: "Invoice successful deleted"
   end
 
   private

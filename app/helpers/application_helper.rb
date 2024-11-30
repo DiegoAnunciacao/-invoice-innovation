@@ -1,5 +1,4 @@
 module ApplicationHelper
-
   def provider_name(provider)
     case provider
     when :google_oauth2
@@ -10,6 +9,4 @@ module ApplicationHelper
       provider.to_s.titleize
     end
   end
-
-
 end

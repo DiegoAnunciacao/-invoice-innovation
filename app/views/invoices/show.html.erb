@@ -1,4 +1,4 @@
-<div class="container content">
+<div class="container content" data-controller="calculator">
   <%# <%= #render 'partials/form_invoice', client: @invoice.client %>
 
   <section class="invoice">
@@ -71,9 +71,9 @@
           </div>
 
           <div class="col-lg-3">
-            <%= f.input :campo_virtual, label: "Subtotal" %>
-            <%= f.input :vat, as: :decimal %>
-            <%= f.input :campo_virtual, label: "TOTAL" %>
+            <p data-calculator-target="subtotal"><%#= @invoice.services.sum(:amount) %></p>
+            <%= f.input :vat, label: false, placeholder: "vat",input_html: { data: { "calculator-target" => "vat", action: "keyup->calculator#updateOnInput" } } %>
+            <p data-calculator-target="total"></p>
 
             <% if @invoice.new_record? %>
               <%= f.submit "Create Invoice", class: "btn btn-primary vat-notes w-100" %>
@@ -84,6 +84,5 @@
         </div>
       <% end %>
     </div>
-</section>
-
+  </section>
 </div>

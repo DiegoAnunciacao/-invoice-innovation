@@ -1,6 +1,5 @@
 .invoice {
-  margin-top: 3rem;
-  padding: 5rem;
+  padding: 2rem;
   border: .1rem solid #DEE2E6;
   border-radius: 1rem;
 
@@ -15,7 +14,7 @@
     font-weight: 600;
   }
 
-  .client-details, .vat-notes {
+  .vat-notes {
     margin-top: 4rem;
   }
 
@@ -27,6 +26,7 @@
 }
 
 #destroy-btn {
+  padding-left: .5rem;
   padding-top: .7rem;
   text-align: right;
 }

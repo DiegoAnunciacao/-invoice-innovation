@@ -29,7 +29,7 @@ Devise.setup do |config|
   config.omniauth :google_oauth2, ENV['GOOGLE_CLIENT_ID'], ENV['GOOGLE_CLIENT_SECRET'], {
     scope: 'email,profile',
     prompt: 'select_account',
-    redirect_uri: 'http://localhost:3000/users/auth/google_oauth2/callback' # Substitua pelo seu redirect_uri
+    redirect_uri: 'https://seu-app.herokuapp.com/users/auth/google_oauth2/callback' # Substitua pelo seu redirect_uri
   }
 
 

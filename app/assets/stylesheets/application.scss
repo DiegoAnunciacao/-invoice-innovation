@@ -10,9 +10,10 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "show";
 
 body {
-    font-family: "Roboto", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }

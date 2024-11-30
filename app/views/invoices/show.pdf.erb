@@ -1,2 +1,71 @@
-<h1>Invoices </h1>
-<%= @invoice.notes %>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <%= wicked_pdf_stylesheet_link_tag "application" %>
+  <title>Document</title>
+</head>
+<body>
+    <h1>Invoices </h1>
+
+  <section class="pdf-invoice row align-items-center justify-content-center mb-3" >
+    <header class="row g-3">
+      <div class="col-md-10 col-12">
+        <h4 class="mb-2">Invoice to</h4>
+        <h2><%= @invoice.client.name.squish.titleize %></h2>
+      </div>
+      <div class="col-md-2 col-12">
+        <div>
+          <h5 class="mb-2">Issue Date</h5>
+          <p><%= Date.today %></p>
+        </div>
+        <div>
+          <h5 class="mb-2">Employee</h5>
+          <p class="form-control">Natalie Machado</p>
+        </div>
+      </div>
+    </header>
+
+    <main class="row align-items-start g-3">
+      <div class="col-md-6 col-12">
+        <h5 class="mb-2">Address</h5>
+        <p><%= @invoice.client.address.squish.titleize %></p>
+        <div class="row g-3">
+          <div class="col-md-4 col-12">
+            <h5 class="mb-2">Postcode</h5>
+            <p><%= @invoice.client.postcode.squish %></p>
+          </div>
+          <div class="col-md-8 col-12 text-wrap">
+            <h5 class="mb-2">Email</h5>
+            <p><%= @invoice.client.email.squish %></p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4 col-12">
+        <h5 class="mb-2">County</h5>
+        <p><%= @invoice.client.county.squish.titleize %></p>
+      </div>
+    </main>
+
+    <div class="row g-3">
+        <h4 class="services text-xl">Services</h4>
+            <% @invoice.services.each do |service| %>
+              <%= service.description %> <!-- Substitua 'name' pelo atributo correto do serviço -->
+            <% end %>
+
+
+        <div class="row vat-notes g-3">
+          <div class="col-lg-8 col-12">
+            <%= @invoice.notes%>
+          </div>
+          <div class="col-lg-4 col-12">
+            <%= @invoice.campo_virtual %>
+            <%= @invoice.vat%>
+            <p>TOTAL</p>
+          </div>
+        </div>
+    </div>
+  </section>
+</body>
+</html>

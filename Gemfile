@@ -20,6 +20,9 @@ gem "jbuilder"
 # gem "redis", ">= 4.0.1"
 gem "pundit"
 
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
+
 gem "faker"
 
 gem 'rondo_form', '~> 0.2.6'

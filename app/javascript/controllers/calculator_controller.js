@@ -23,13 +23,9 @@ export default class extends Controller {
     this.totalTarget.innerText = total.toFixed(2)
   }
 
-  updateOnInput() {
+  updateVat() {
     this.calculateSubtotal()
   }
 
-  updateAfterRemove(event) {
-    event.preventDefault()
-    event.target.closest(".service-field").remove()
-    this.calculateSubtotal()
-  }
+  
 }

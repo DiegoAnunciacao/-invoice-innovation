@@ -23,10 +23,23 @@
     margin-bottom: 1rem;
   }
 
-}
+  textarea {
+    height: 9.38rem;
+    border-radius: 1rem;
+  }
 
-#destroy-btn {
-  padding-left: .5rem;
-  padding-top: .7rem;
-  text-align: right;
+  #destroy-btn {
+    padding-left: .5rem;
+    padding-top: .7rem;
+    text-align: right;
+  }
+
+  input {
+    border-radius: 1rem;
+  }
+
+  .create-btn {
+    border-radius: 0;
+  }
+
 }

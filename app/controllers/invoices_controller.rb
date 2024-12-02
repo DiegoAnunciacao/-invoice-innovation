@@ -38,7 +38,7 @@ class InvoicesController < ApplicationController
   def update
     authorize @invoice
     if @invoice.update(invoice_params)
-      redirect_to invoices_path, notice: "Invoice successful updated"
+      redirect_to invoice_path(@invoice), notice: "Invoice successful updated"
     else
       render :edit
     end
@@ -61,6 +61,6 @@ class InvoicesController < ApplicationController
   end
 
   def invoice_params
-    params.require(:invoice).permit(:vat, :notes, services_attributes: %i[description amount id])
+    params.require(:invoice).permit(:vat, :notes, services_attributes: %i[description amount id _destroy])
   end
 end

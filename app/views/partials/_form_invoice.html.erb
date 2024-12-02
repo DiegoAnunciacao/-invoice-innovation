@@ -1,4 +1,4 @@
-<section class="invoice row align-items-center justify-content-center mb-3">
+<section class="invoice row align-items-center justify-content-center mb-3" data-controller="calculator">
   <header class="row g-3">
     <div class="col-md-10 col-12">
       <h4 class="mb-2">Invoice to</h4>
@@ -44,6 +44,7 @@
       <h4 class="services text-xl">Services</h4>
       <div data-controller="nested-rondo" data-nested-rondo-field-class-value="service-field">
         <div data-nested-rondo-target="fieldContain">
+
           <%= f.simple_fields_for :services do |service| %>
             <%= render "service_fields", f: service %>
           <% end %>
@@ -54,14 +55,28 @@
       </div>
 
       <div class="row vat-notes g-3">
+
         <div class="col-lg-8 col-12">
-          <%= f.input :notes, as: :text, label: "Notes" %>
+          <%= f.input :notes, as: :text, placeholder: "Notes", label: false %>
         </div>
+
         <div class="col-lg-4 col-12">
-          <%= f.input :campo_virtual, label: "Subtotal" %>
-          <%= f.input :vat, as: :decimal %>
-          <%= f.input :campo_virtual, label: "TOTAL" %>
-          <%= f.submit @invoice.new_record? ? "Create Invoice" : "Update Invoice", class: "btn btn-primary w-100 mt-2" %>
+          <div>
+            <h5 class="mb-2">Subtotal</h5>
+            <p class="w-100" data-calculator-target="subtotal"></p>
+          </div>
+
+          <div>
+            <h5 class="my-2">VAT</h5>
+            <%= f.input :vat, as: :string, label: false, placeholder: "%",input_html: { data: { "calculator-target" => "vat", action: "keyup->calculator#updateVat" } } %>
+          </div>
+
+          <div>
+            <h5 class="mb-2">Total</h5>
+            <p class="w-100" data-calculator-target="total"></p>
+          </div>
+
+          <%= f.submit @invoice.new_record? ? "Create Invoice" : "Update Invoice", class: "btn btn-primary w-100 mt-2 create-btn" %>
         </div>
       </div>
     <% end %>

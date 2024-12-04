@@ -9,11 +9,11 @@
           <input type="text" placeholder="Search here">
       </label>
     </div> %>
-    <% if user_signed_in? %>
-      <div class="user">
-          <%= link_to  edit_user_registration_path do %>
-            <%= image_tag current_user.image_logo %>
-          <% end %>
-      </div>
-    <% end %>
+    <%# <% if user_signed_in? %>
+      <%# <div class="user"> %>
+          <%# <%= link_to  edit_user_registration_path do %>
+            <%# <%= image_tag current_user.image_logo %>
+          <%# <% end %>
+      <%# </div> %>
+    <%# <% end %>
 </div>

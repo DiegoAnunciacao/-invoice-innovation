@@ -1,11 +1,3 @@
-<div class="row row-cols-1 row-cols-lg-12 align-items-center justify-content-center mb-3">
-  <div class="col text-start">
-    <div>
-      <h5 class="audiowide">INVOICE LIST<span class="text-muted fw-normal ms-2">(<%= @invoices.size %>)</span></h5>
-    </div>
-  </div>
-</div>
-
 <div class="row mt-2 align-items-center justify-content-center">
   <div class="col-md-6 col-12">
     <%= form_with url: invoices_path, method: :get, class: "d-flex" do %>
@@ -19,42 +11,41 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="table-responsive">
-        <table class="table project-list-table table-nowrap align-middle table-borderless text-center">
-            <thead>
-                <tr>
-                    <th scope="col">Invoice ID</th>
-                    <th scope="col">Client</th>
-                    <th scope="col">Phone</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Status</th>
-                    <th scope="col" style="width: 200px;">DELETE</th>
-                </tr>
-            </thead>
-
-          <tbody>
-            <% @invoices.each do |invoice| %>
-              <tr>
-                <td>
-                  <%= link_to invoice.id, invoice_path(invoice), class: "text-body" %>
-                </td>
-                <td><span class="mb-0"><%= link_to invoice.client.name.titleize, invoice_path(invoice), class: "text-body" %></span></td>
-                <td><%= invoice.client.phone %></td>
-                <td><span class="mb-0"><%= invoice.client.email %></span></td>
-                <td><i class="fa-regular fa-circle-check badge-soft-success"></i></td>
-                <td>
-                  <ul class="list-inline mb-0">
-                    <li class="list-inline-item">
-                      <%= link_to "", invoice_path(invoice), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this invoice? This action cannot be undone."}, class: "fa-regular fa-circle-xmark badge-soft-danger", title: "Delete Invoice" %>
-                    </li>
-                  </ul>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+<div class="details d-flex flex-column">
+  <div class="recentInvoices">
+    <div class="cardHeader">
+      <h2>Invoice List</h2>
     </div>
+    <table>
+      <thead>
+        <tr>
+          <td>Invoice ID</td>
+          <td>Client</td>
+          <td>Phone</td>
+          <td>Email</td>
+          <td>Status</td>
+          <td>DELETE</td>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @invoices.each do |invoice| %>
+          <tr onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;">
+            <td><%= invoice.id %></td>
+            <td><%= invoice.client.name.titleize %></td>
+            <td><%= invoice.client.phone %></td>
+            <td><<%= invoice.client.email %></td>
+            <td><i class="fa-regular fa-circle-check badge-soft-success"></i></td>
+            <td>
+              <ul class="list-inline mb-0">
+                <li class="list-inline-item">
+                  <%= link_to "", invoice_path(invoice), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this invoice? This action cannot be undone."}, class: "fa-regular fa-circle-xmark badge-soft-danger", title: "Delete Invoice" %>
+                </li>
+              </ul>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 </div>

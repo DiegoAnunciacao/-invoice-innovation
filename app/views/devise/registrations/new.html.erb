@@ -1,28 +1,36 @@
-<div class="container col-md-6 mt-5">
-  <h2 class="audiowide">Sign up</h2>
-
-  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= f.error_notification %>
-
-    <div class="form-inputs">
-      <%= f.input :email,
-                  required: true,
-                  autofocus: true,
-                  input_html: { autocomplete: "email" }%>
-      <%= f.input :password,
-                  required: true,
-                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                  input_html: { autocomplete: "new-password" } %>
-      <%= f.input :password_confirmation,
-                  required: true,
-                  input_html: { autocomplete: "new-password" } %>
+<div class="main" data-sidebar-target="toggle" data-controller="sidebar">
+  <%= render 'partials/topbar' %>
+  <div class="container col-md-6 px-3 mt-5">
+    <div class="login-main">
+      <h2 class="audiowide">Sign Up</h2>
+      <%= render "devise/shared/links" %>
     </div>
 
-    <div class="form-actions">
-      <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
+    <div class="login-body row align-items-center justify-content-center">
+
+      <div class="col-md-6 col-12">
+        <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+          <%= f.error_notification %>
+
+          <div class="form-inputs">
+            <%= f.input :email,
+                        required: true,
+                        autofocus: true,
+                        input_html: { autocomplete: "email" }%>
+            <%= f.input :password,
+                        required: true,
+                        hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                        input_html: { autocomplete: "new-password" } %>
+            <%= f.input :password_confirmation,
+                        required: true,
+                        input_html: { autocomplete: "new-password" } %>
+          </div>
+
+          <div class="form-actions">
+            <%= f.button :submit, "Sign up", class: "btn btn-primary w-100" %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
-
+  </div>
 </div>

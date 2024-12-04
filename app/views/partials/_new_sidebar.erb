@@ -1,0 +1,78 @@
+<div class="navigation" data-sidebar-target="toggle" data-controller="sidebar">
+  <ul>
+    <li>
+      <%= link_to root_path do %>
+        <span class="icon mt-1">
+          <i class="fa-solid fa-barcode home-outline" style="font-size: 1.5rem;"></i>
+        </span>
+        <h5 class="audiowide title" style="font-size: 1.6rem">INVOICE Innov</h5>
+      <% end %>
+    </li>
+
+
+    <li>
+      <%= link_to root_path do %>
+        <span class="icon">
+            <i class="fa-solid fa-house home-outline" ></i>
+        </span>
+        <span class="title">Home</span>
+      <% end %>
+    </li>
+
+    <% if user_signed_in? %>
+      <li>
+        <%= link_to workspace_path do %>
+          <span class="icon">
+              <i class="fa-solid fa-briefcase home-outline" ></i>
+          </span>
+          <span class="title">Workspace</span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to edit_user_registration_path do %>
+          <span class="icon">
+            <i class="fa-solid fa-user home-outline"></i>
+          </span>
+          <span class="title">Profile</span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to clients_path do %>
+          <span class="icon">
+            <i class="fa-solid fa-users home-outline"></i>
+          </span>
+          <span class="title">Clients</span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to invoices_path do %>
+          <span class="icon">
+            <i class="fa-solid fa-file-invoice home-outline"></i>
+          </span>
+          <span class="title">Invoices</span>
+        <% end %>
+      </li>
+
+      <li>
+        <%= link_to destroy_user_session_path, data: {turbo_method: :delete, turbo_confirm: "Your session has been successfully logged out."} do %>
+          <span class="icon">
+            <i class="fa-solid fa-right-from-bracket home-outline"></i>
+          </span>
+          <span class="title">Log Out</span>
+        <% end %>
+      </li>
+      <% else %>
+        <li>
+          <%= link_to new_user_session_path do  %>
+          <span class="icon">
+            <i class="fa-solid fa-right-from-bracket home-outline"></i>
+          </span>
+          <span class="title">Log In</span>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+</div>

@@ -28,6 +28,7 @@ gem 'omniauth-google-oauth2'
 
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

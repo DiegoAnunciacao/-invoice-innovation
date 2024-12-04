@@ -1,4 +1,6 @@
-<div class="container col-lg-12 mt-5">
-  <div class="mt-4">
+<div class="main" data-sidebar-target="toggle" data-controller="sidebar">
+  <%= render 'partials/topbar' %>
+  <div class="container">
     <%= render 'partials/list', clients: @clients %>
+  </div>
 </div>

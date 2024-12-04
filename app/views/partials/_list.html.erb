@@ -1,4 +1,4 @@
-<div class="row mt-2 align-items-center justify-content-center">
+<div class="row align-items-center justify-content-center">
   <div class="col-md-6 col-12">
     <%= form_with url: clients_path, method: :get, class: "d-flex" do %>
       <%= text_field_tag :query,
@@ -17,13 +17,12 @@
       <h2>Client List</h2>
       <%= link_to "New Client", new_client_path, class: "btn btn-primary" %>
     </div>
-    <table>
+    <table class="mt-5">
       <thead>
         <tr>
           <td>Name</td>
           <td>Email</td>
           <td>Phone Number</td>
-          <td>Postcode</td>
         </tr>
       </thead>
 
@@ -35,7 +34,6 @@
               </td>
               <td><%= client.email %></td>
               <td><%= client.phone %></td>
-              <td><%= client.postcode %></td>
             </tr>
           <% end %>
         </tbody>

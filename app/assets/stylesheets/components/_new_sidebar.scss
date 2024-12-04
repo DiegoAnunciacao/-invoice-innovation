@@ -107,3 +107,9 @@ ul {
   box-shadow: 35px -35px 0 10px var(--white);
   pointer-events: none;
 }
+
+.btn-primary:hover {
+  background-color: var(--bs-btn-hover-color);
+  color: #0E223E;
+  font-weight: 400;
+}

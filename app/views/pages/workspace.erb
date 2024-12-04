@@ -4,14 +4,14 @@
   <div class="cardBox">
     <div class="card d-flex" onclick="location.href='<%= clients_path %>'" style="cursor: pointer;">
       <div>
-        <div class="numbers"><%= Client.all.size %></div>
+        <div class="numbers"><%= current_user.clients.all.size %></div>
         <div class="cardName">Clients</div>
       </div>
     </div>
 
     <div class="card d-flex" onclick="location.href='<%= invoices_path %>'" style="cursor: pointer;">
       <div>
-        <div class="numbers"><%= Invoice.all.size %></div>
+        <div class="numbers"><%= current_user.invoices.all.size %></div>
         <div class="cardName">Invoices</div>
       </div>
     </div>
@@ -35,20 +35,20 @@
       <table>
         <thead>
           <tr>
+            <td>Invoice ID</td>
             <td>Client Name</td>
             <td>Date</td>
-            <td>Email</td>
             <td>Status</td>
           </tr>
         </thead>
 
           <tbody>
-            <% current_user.invoices.order(created_at: :desc).limit(8).each_with_index do |invoice, index| %>
+            <% current_user.invoices.order(created_at: :desc).limit(8).each do |invoice| %>
               <tr onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;">
-                <td><%= index + 1 %> - <%= invoice.client.name.titleize %></td>
+                <td><%= invoice.id %></td>
+                <td><%= invoice.client.name.titleize %></td>
                 <td><%= invoice.created_at.strftime("%d/%m/%Y") %></td>
-                <td><%= invoice.client.email %></td>
-                <td><span class="status delivered">Active</span></td>
+                <td><span class="status delivered">Submitted</span></td>
               </tr>
             <% end %>
           </tbody>

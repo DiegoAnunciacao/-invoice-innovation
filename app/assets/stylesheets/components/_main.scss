@@ -186,18 +186,14 @@
   background: var(--blue);
   color: var(--white);
 }
+
 .details .recentInvoices table tr td {
   padding: 10px;
 }
-.details .recentInvoices table tr td:last-child {
-  text-align: start;
-}
-.details .recentInvoices table tr td:nth-child(2) {
-  text-align: start;
-}
-.details .recentInvoices table tr td:nth-child(3) {
+.details .recentInvoices table tr td {
   text-align: center;
 }
+
 .status.delivered {
   padding: 2px 4px;
   background: #8de02c;

@@ -1,4 +1,5 @@
-<div class="container d-flex justify-content-center flex-column">
+<div class="main" data-sidebar-target="toggle" data-controller="sidebar">
+  <%= render 'partials/topbar' %>
   <div class="details-grid mt-4">
     <%= render "partials/form", client: @client %>
  </div>

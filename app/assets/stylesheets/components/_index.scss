@@ -2,13 +2,13 @@
 @import "alert";
 @import "avatar";
 @import "form_legend_clear";
-@import "navbar";
 @import "list";
 @import "invoice";
 @import "details";
-@import "sidebar";
 @import "footer";
 @import "login";
+@import "new_sidebar";
+@import "main";
 
 h1,
 h2,
@@ -23,15 +23,18 @@ a {
   margin: 0;
   padding: 0;
   text-decoration: none;
-  color: black;
 }
 
 body {
-  margin: 5rem 1rem 6rem 5rem;
+  // margin: 5rem 1rem 6rem 5rem;
   background-color: white;
-
 }
 
-.container {
-  min-height: 100%;
+
+:root {
+  --blue: #0E223E;
+  --white: #fff;
+  --gray: #f5f5f5;
+  --black1: #222;
+  --black2: #999;
 }

@@ -6,6 +6,6 @@ export default class extends Controller {
   static targets = ["toggle"]
 
   highlight() {
-    this.toggleTarget.classList.toggle("expand")
+    this.toggleTarget.classList.toggle("active")
   }
 }

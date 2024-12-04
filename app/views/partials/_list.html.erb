@@ -1,12 +1,3 @@
-<div class="row row-cols-2 row-cols-lg-12 align-items-center justify-content-center mb-3">
-  <div class="col text-start">
-    <h5 class="audiowide">CLIENT LIST<span class="text-muted fw-normal ms-2">(<%= @clients.size %>)</span></h5>
-  </div>
-  <div class="col text-end">
-    <%= link_to "New Client", new_client_path, class: "btn btn-primary" %>
-  </div>
-</div>
-
 <div class="row mt-2 align-items-center justify-content-center">
   <div class="col-md-6 col-12">
     <%= form_with url: clients_path, method: :get, class: "d-flex" do %>
@@ -20,42 +11,35 @@
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-12">
-    <div class="table-responsive">
-        <table class="table project-list-table table-nowrap align-middle table-borderless">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Postcode</th>
-                    <th class="text-center" scope="col" style="width: 200px;">Create Invoice</th>
-                </tr>
-            </thead>
+<div class="details d-flex flex-column">
+  <div class="recentInvoices">
+    <div class="cardHeader">
+      <h2>Client List</h2>
+      <%= link_to "New Client", new_client_path, class: "btn btn-primary" %>
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <td>Name</td>
+          <td>Email</td>
+          <td>Phone Number</td>
+          <td>Postcode</td>
+        </tr>
+      </thead>
 
-          <tbody>
-            <% @clients.each do |client| %>
-              <tr>
-                <td>
-                  <%= link_to client.name.titleize, client_path(client), class: "text-body" %>
-                </td>
-                <td><span class="mb-0"><%= client.phone %></span></td>
-                <td><%= client.email %></td>
-                <td><%= client.postcode %></td>
-                <td>
-                  <ul class="list-inline mb-0 text-center">
-                    <li class="list-inline-item">
-                      <%= link_to new_client_invoice_path(client), title: "New Invoice" do %>
-                          <i class="fa-solid fa-file-invoice badge-soft-primary"></i>
-                      <% end %>
-                    </li>
-                  </ul>
-                </td>
-              </tr>
-            <% end %>
-          </tbody>
-        </table>
+        <tbody>
+          <% @clients.each do |client| %>
+            <tr onclick="location.href='<%= client_path(client) %>'" style="cursor: pointer;">
+              <td>
+                <%= client.name.titleize %>
+              </td>
+              <td><%= client.email %></td>
+              <td><%= client.phone %></td>
+              <td><%= client.postcode %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

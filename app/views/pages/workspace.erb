@@ -1,6 +1,77 @@
-<div class="container my-4">
-  <h5>workspace</h5>
+<div class="main" data-sidebar-target="toggle" data-controller="sidebar">
+  <%= render "partials/topbar" %>
+  <!-- ======================= Cards ================== -->
+  <div class="cardBox">
+    <div class="card d-flex" onclick="location.href='<%= clients_path %>'" style="cursor: pointer;">
+      <div>
+        <div class="numbers"><%= Client.all.size %></div>
+        <div class="cardName">Clients</div>
+      </div>
+    </div>
+
+    <div class="card d-flex" onclick="location.href='<%= invoices_path %>'" style="cursor: pointer;">
+      <div>
+        <div class="numbers"><%= Invoice.all.size %></div>
+        <div class="cardName">Invoices</div>
+      </div>
+    </div>
+
+    <div class="card" onclick="location.href='<%= invoice_path(current_user.invoices.last) %>'" style="cursor: pointer;">
+      <div>
+        <div class="numbers"><%= Client.last.name.titleize %></div>
+        <div class="cardName">The last Invoice</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================ Order Details List ================= -->
+  <div class="details">
+    <div class="recentInvoices">
+      <div class="cardHeader">
+          <h2>Recent Invoices</h2>
+          <%= link_to "View All", invoices_path, class: "btn btn-primary" %>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <td>Client Name</td>
+            <td>Date</td>
+            <td>Email</td>
+            <td>Status</td>
+          </tr>
+        </thead>
+
+          <tbody>
+            <% current_user.invoices.order(created_at: :desc).limit(8).each_with_index do |invoice, index| %>
+              <tr onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;">
+                <td><%= index + 1 %> - <%= invoice.client.name.titleize %></td>
+                <td><%= invoice.created_at.strftime("%d/%m/%Y") %></td>
+                <td><%= invoice.client.email %></td>
+                <td><span class="status delivered">Active</span></td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+    </div>
+
+        <!-- ================= New Customers ================ -->
+    <div class="recentCustomers">
+      <div class="cardHeader">
+        <h2>Recent Clients</h2>
+      </div>
+        <% current_user.clients.order(created_at: :desc).limit(8).each do |client| %>
+        <table>
+            <tr onclick="location.href='<%= client_path(client)%>'" style="cursor: pointer;">
+              <td width="60px">
+                <div class="imgBx"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""></div>
+              </td>
+                <td>
+                  <h4><%= client.name.titleize %> <br> <span><%= client.county.titleize %></span></h4>
+                </td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
 </div>
-
-
-<%# <%= render "/partials/sidebar" %>

@@ -19,10 +19,11 @@
   </head>
 
   <body>
-    <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
+    <div data-sidebar-target="toggle" data-controller="sidebar">
+      <%= render "partials/new_sidebar" %>
+    </div>
 
-    <%= render "partials/sidebar" %>
     <%= yield %>
 
     <%= render 'partials/footer' %>

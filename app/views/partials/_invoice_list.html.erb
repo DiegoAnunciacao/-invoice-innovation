@@ -33,7 +33,7 @@
             <td><%= invoice.id %></td>
             <td><%= invoice.client.name.titleize %></td>
             <td><%= invoice.created_at.strftime("%d/%m/%Y") %></td>
-            <td><i class="text-center fa-regular fa-circle-check badge-soft-success"></i></td>
+            <td><span class="status delivered">Submitted</span></td>
             <td class="no-hover">
               <ul class="list-inline mb-0">
                 <li class="list-inline-item">

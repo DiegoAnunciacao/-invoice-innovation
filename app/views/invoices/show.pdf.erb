@@ -7,8 +7,6 @@
   <title>Document</title>
 </head>
 <body>
-    <h1>Invoices </h1>
-
   <section class="pdf-invoice row align-items-center justify-content-center mb-3" >
     <header class="row g-3">
       <div class="col-md-10 col-12">
@@ -49,22 +47,35 @@
     </main>
 
     <div class="row g-3">
-        <h4 class="services text-xl">Services</h4>
-            <% @invoice.services.each do |service| %>
-              <%= service.description %> <!-- Substitua 'name' pelo atributo correto do serviço -->
+      <div class="row vat-notes g-3">
+      <h4 class="services text-xl">Services</h4>
+          <% @invoice.services.each do |service| %>
+              <div class="container">
+                <%= service.description %>
+              </div>
+          <% end %>
+
+        <div class="col-lg-8 col-12">
+          <h4 class="services text-xl">Notes</h4>
+          <ul>
+            <% @invoice.notes.split(/\r?\n/).reject(&:blank?).each do |note| %>
+              <li><%= note.strip %></li>
             <% end %>
-
-
-        <div class="row vat-notes g-3">
-          <div class="col-lg-8 col-12">
-            <%= @invoice.notes%>
-          </div>
-          <div class="col-lg-4 col-12">
-            <%= @invoice.campo_virtual %>
-            <%= @invoice.vat%>
-            <p>TOTAL</p>
-          </div>
+          </ul>
         </div>
+        <div class="col-lg-4 col-12">
+          <div class="container">
+            <h4 class="services text-xl">Subtotal</h4>
+            <%= @subtotal %>
+          </div>
+          <div class="container">
+          <h4 class="services text-xl">Vat</h4>
+            <%= @invoice.vat%>
+          </div>
+          <p>TOTAL: <%= @total %></p>
+
+        </div>
+      </div>
     </div>
   </section>
 </body>

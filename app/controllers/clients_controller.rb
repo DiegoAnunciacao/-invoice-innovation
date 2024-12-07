@@ -49,7 +49,7 @@ class ClientsController < ApplicationController
     authorize @client
     @client.status = false
     @client.save
-    redirect_to clients_path, notice: "Client successful deleted"
+    redirect_to clients_path, alert: "Client successful deleted"
   end
 
 

@@ -1,6 +1,14 @@
 .alert {
-  position: fixed;
-  bottom: 40px;
+  position: fixed !important;
+  bottom: 70px;
   right: 20px;
   z-index: 1000;
+}
+
+.alert.notice {
+  background-color: green;
+}
+
+.alert.delete {
+  background-color: red;
 }

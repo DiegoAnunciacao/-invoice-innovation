@@ -3,4 +3,8 @@ class Client < ApplicationRecord
   belongs_to :user
   has_many :invoices
 
+  def self.status
+    @status = Client.status
+  end
+
 end

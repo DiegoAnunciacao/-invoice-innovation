@@ -13,14 +13,29 @@ export default class extends Controller {
 
   removeField(e) {
     e.preventDefault();
+
     const wrapperField = this.hasFieldClassValue ? e.target.closest("." + this.fieldClassValue) : e.target.parentNode;
 
     if(e.target.matches('.dynamic')) {
       wrapperField.remove();
+
+
     } else {
       wrapperField.querySelector("input[name*='_destroy']").value = 1;
+      wrapperField.querySelector("input[name*='amount']").value = 0;
       wrapperField.style.display = "none";
+
     }
+
+    const calculatorController = this.application.getControllerForElementAndIdentifier(
+      document.querySelector('[data-controller="calculator"]'),
+      "calculator"
+    );
+
+    if (calculatorController) {
+      calculatorController.calculateSubtotal();
+    }
+
   }
 
 

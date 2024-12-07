@@ -4,7 +4,7 @@ class InvoicesController < ApplicationController
   after_action :verify_authorized, except: :index
 
   def index
-    @invoices = Invoice.includes(:client).where(clients: { user_id: current_user.id })
+    @invoices = Invoice.includes(:client).where(clients: { user_id: current_user.id }).order(:id)
     if params[:query].present?
       sql_subquery = "name ILIKE :query OR email ILIKE :query"
         @invoices = @invoices.where(sql_subquery, query: "%#{params[:query]}%")

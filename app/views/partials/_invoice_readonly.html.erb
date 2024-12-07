@@ -58,13 +58,13 @@
 
     <div class="col-lg-4 col-12">
       <h5 class="mb-2">Subtotal</h5>
-      <p>€<%= sprintf "%.2f", @invoice.services.sum(&:amount) %></p>
+      <p>€<%= sprintf "%.2f", @invoice.subtotal %></p>
 
       <h5 class="my-2">VAT</h5>
       <p><%= @invoice.vat %>%</p>
 
       <h5 class="mb-2">Total</h5>
-      <p>€<%= sprintf "%.2f", ((@invoice.services.sum(&:amount) * @invoice.vat).to_f / 100) + @invoice.services.sum(&:amount)   %></p>
+      <p>€<%= sprintf "%.2f", @invoice.total %></p>
 
       <%= link_to "Edit Invoice", edit_invoice_path(@invoice), class: "btn btn-primary w-100 mt-4" %>
     </div>

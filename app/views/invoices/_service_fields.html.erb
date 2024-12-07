@@ -4,9 +4,21 @@
       <%= f.input :description, label: false, placeholder: "Description" %>
     </div>
     <div class="col-md-3 d-flex">
-      <%= f.input :amount, label: false, placeholder: "Amount", input_html: { data: { "calculator-target" => "amount", action: "keyup->calculator#calculateSubtotal" } } %>
+      <%= f.input :amount,
+                  label: false,
+                  placeholder: "Amount",
+                  input_html: {
+                    data: {
+                      "calculator-target" => "amount",
+                      action: "keyup->calculator#calculateSubtotal"
+                      }
+                    }
+      %>
 
-      <%= link_to_remove_association "", f, id: "destroy-btn", class: "fa-solid fa-trash col-md-2 badge-soft-danger" %>
+      <%= link_to_remove_association "", f,
+                                        id: "destroy-btn",
+                                        class: "fa-solid fa-trash col-md-2 badge-soft-danger"
+      %>
 
     </div>
   </div>

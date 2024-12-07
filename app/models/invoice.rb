@@ -3,9 +3,21 @@ class Invoice < ApplicationRecord
 
   belongs_to :client
   has_many :services, inverse_of: :invoice, dependent: :destroy
-  accepts_nested_attributes_for :services, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :services, allow_destroy: true, reject_if: :all_blank
   validates :vat, presence: true
   validate :validate_services
+
+  def subtotal
+    services.sum(&:amount)
+  end
+
+  def vat_amount
+    (subtotal * vat.to_f / 100).round(2)
+  end
+
+  def total
+    (subtotal + vat_amount).round(2)
+  end
 
   private
 

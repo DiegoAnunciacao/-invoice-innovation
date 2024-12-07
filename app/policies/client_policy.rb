@@ -32,6 +32,10 @@ class ClientPolicy < ApplicationPolicy
     user_owns_record?
   end
 
+  def deactivate?
+    user_owns_record?
+  end
+
   private
 
   def user_owns_record?

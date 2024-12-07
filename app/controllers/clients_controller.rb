@@ -1,13 +1,13 @@
 class ClientsController < ApplicationController
   before_action :authenticate_user!
   after_action :verify_authorized, except: :index
-  before_action :set_client, only: [:show, :edit, :update, :destroy]
+  before_action :set_client, only: [:show, :edit, :update, :deactivate]
 
   def index
-    @clients = current_user.clients
+    @clients = current_user.clients.where(status: true)
     if params[:query].present?
       sql_subquery = "name ILIKE :query OR email ILIKE :query"
-      @clients = @clients.where(sql_subquery, query: "%#{params[:query]}%")
+      @clients = current_user.clients.where(sql_subquery, query: "%#{params[:query]}%")
     end
   end
 
@@ -45,11 +45,19 @@ class ClientsController < ApplicationController
     end
   end
 
-  def destroy
+  def deactivate
     authorize @client
-    @client.destroy
+    @client.status = false
+    @client.save
     redirect_to clients_path, notice: "Client successful deleted"
   end
+
+
+  # def destroy
+  #   authorize @client
+  #   @client.destroy
+  #   redirect_to clients_path, notice: "Client successful deleted"
+  # end
 
   private
 

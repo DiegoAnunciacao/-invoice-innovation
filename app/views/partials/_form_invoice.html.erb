@@ -44,7 +44,6 @@
       <h4 class="services text-xl">Services</h4>
       <div data-controller="nested-rondo" data-nested-rondo-field-class-value="service-field">
         <div data-nested-rondo-target="fieldContain">
-
           <%= f.simple_fields_for :services do |service| %>
             <%= render "service_fields", f: service %>
           <% end %>

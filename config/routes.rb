@@ -19,9 +19,11 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   resources :clients do
+    
     resources :invoices, only: [:new, :create]
   end
 
+  patch "deactivate/:id", to: "clients#deactivate", as: :deactivate_client
   resources :invoices, only: [:index, :edit, :update, :show, :destroy]
 
 

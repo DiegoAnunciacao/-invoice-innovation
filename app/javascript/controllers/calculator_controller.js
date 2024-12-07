@@ -17,7 +17,7 @@ export default class extends Controller {
 
     const vat = parseFloat(this.vatTarget.value) || 0
 
-    const total = subtotal + (subtotal * vat / 100)
+    const total = subtotal + (subtotal * vat / 100) || 0
 
     this.subtotalTarget.innerText = subtotal.toFixed(2)
     this.totalTarget.innerText = total.toFixed(2)
@@ -26,6 +26,4 @@ export default class extends Controller {
   updateVat() {
     this.calculateSubtotal()
   }
-
-  
 }

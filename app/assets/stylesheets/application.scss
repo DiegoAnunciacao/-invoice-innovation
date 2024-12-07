@@ -10,7 +10,7 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
-@import "show";
+@import "pdf";
 
 body {
   font-family: "Roboto", sans-serif;
@@ -18,22 +18,25 @@ body {
   font-style: normal;
 }
 
-
 @media (max-width: 991px) {
   .navigation {
     left: 0;
   }
+
   .navigation.active {
     width: 300px;
     left: 0;
   }
+
   .main {
     width: 100%;
     left: 0;
   }
+
   .main.active {
     left: 300px;
   }
+
   .cardBox {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -43,9 +46,11 @@ body {
   .details {
     grid-template-columns: 1fr;
   }
+
   .recentInvoices {
     overflow-x: auto;
   }
+
   .status.inProgress {
     white-space: nowrap;
   }
@@ -55,22 +60,28 @@ body {
   .cardBox {
     grid-template-columns: repeat(1, 1fr);
   }
+
   .cardHeader h2 {
     font-size: 20px;
   }
+
   .user {
     min-width: 40px;
   }
+
   .navigation {
     width: 100%;
   }
+
   .navigation.active {
     width: 100%;
     left: 0;
   }
+
   .toggle {
     z-index: 10001;
   }
+
   .main.active.toggle {
     color: #fff;
     position: fixed;

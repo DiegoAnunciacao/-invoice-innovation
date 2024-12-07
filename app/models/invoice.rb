@@ -7,6 +7,18 @@ class Invoice < ApplicationRecord
   validates :vat, presence: true
   validate :validate_services
 
+  def subtotal
+    services.sum(&:amount)
+  end
+
+  def vat_amount
+    (subtotal * vat.to_f / 100).round(2)
+  end
+
+  def total
+    (subtotal + vat_amount).round(2)
+  end
+
   private
 
   # def validates_services
@@ -21,4 +33,5 @@ class Invoice < ApplicationRecord
       errors.add(:missing_services, "Invoice must have at least one Service.")
     end
   end
+
 end

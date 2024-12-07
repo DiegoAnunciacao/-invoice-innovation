@@ -8,6 +8,7 @@
     <%= csp_meta_tag %>
 
     <%= yield :head %>
+    <%# <%= yield :header if content_for?(:header) %>
 
     <link rel="manifest" href="/manifest.json">
     <link rel="icon" href="/icon.png" type="image/png">
@@ -18,13 +19,12 @@
   </head>
 
   <body>
-    <%= render "shared/flashes" %>
     <div data-sidebar-target="toggle" data-controller="sidebar">
       <%= render "partials/new_sidebar" %>
     </div>
 
     <%= yield %>
-
+    <%= render "shared/flashes" %>
     <%= render 'partials/footer' %>
 
   </body>

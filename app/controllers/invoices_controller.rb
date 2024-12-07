@@ -13,6 +13,12 @@ class InvoicesController < ApplicationController
 
   def show
     authorize @invoice
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "file_name"
+      end
+    end
   end
 
   def new
@@ -47,7 +53,7 @@ class InvoicesController < ApplicationController
   def destroy
     authorize @invoice
     @invoice.destroy
-    redirect_to invoices_path, notice: "Invoice successful deleted"
+    redirect_to invoices_path, alert: "Invoice successful deleted"
   end
 
   private

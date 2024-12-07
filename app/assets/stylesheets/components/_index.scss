@@ -9,6 +9,7 @@
 @import "login";
 @import "new_sidebar";
 @import "main";
+@import "pdf";
 
 h1, h2, h3, h4, h5 {
   margin: 0;
@@ -27,6 +28,7 @@ body {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-style: normal;
+  position: relative;
 }
 
 

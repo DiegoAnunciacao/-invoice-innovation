@@ -33,5 +33,4 @@ class Invoice < ApplicationRecord
       errors.add(:missing_services, "Invoice must have at least one Service.")
     end
   end
-
 end

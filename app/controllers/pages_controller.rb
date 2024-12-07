@@ -6,8 +6,4 @@ class PagesController < ApplicationController
 
   def workspace
   end
-
-  def pdf
-
-  end
 end

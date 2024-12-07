@@ -25,7 +25,7 @@ gem 'wkhtmltopdf-binary'
 
 gem "faker"
 
-gem 'rondo_form', '~> 0.2.6'
+gem 'rondo_form', '~> 1.0.0'
 
 gem 'omniauth-google-oauth2'
 

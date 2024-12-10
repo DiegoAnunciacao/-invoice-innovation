@@ -30,7 +30,6 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
-gem "wkhtmltopdf-heroku"
 
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]

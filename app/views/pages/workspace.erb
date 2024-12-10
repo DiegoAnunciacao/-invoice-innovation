@@ -59,16 +59,14 @@
     <div class="recentCustomers">
       <div class="cardHeader">
         <h2>Recent Clients</h2>
+        <%= link_to "New Client", new_client_path, class: "btn btn-primary" %>
       </div>
         <% current_user.clients.order(created_at: :desc).limit(8).each do |client| %>
         <table>
             <tr onclick="location.href='<%= client_path(client)%>'" style="cursor: pointer;">
-              <td width="60px">
-                <div class="imgBx"><img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""></div>
+              <td>
+                <h4><%= client.name.titleize %> <br> <span><%= client.county.titleize %></span></h4>
               </td>
-                <td>
-                  <h4><%= client.name.titleize %> <br> <span><%= client.county.titleize %></span></h4>
-                </td>
             </tr>
           <% end %>
         </table>

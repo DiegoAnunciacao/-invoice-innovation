@@ -1,1 +1,4 @@
 *.pdf
+*.ttf
+*.otf
+public/assets/*

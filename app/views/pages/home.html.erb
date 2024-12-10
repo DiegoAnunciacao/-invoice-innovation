@@ -1,18 +1,184 @@
 <div class="main" data-sidebar-target="toggle" data-controller="sidebar">
   <%= render 'partials/topbar' %>
   <div class="container">
-    <div class="row">
-      <div class="col-md-6">
-        <%= image_tag "/background-home.jpg", class: "w-100" %>
+    <div>
+      <div id="background-home"class="d-flex flex-column align-items-center justify-content-center" style="background-image: url('carousel-1.jpg'); background-size: cover; height: 75vh;">
+
+      <div class="p-3 text-center" style="max-width: 900px;">
+        <h1 class="display-1 text-white mb-md-4">Invoice Innovation Solution</h1>
+        <% unless user_signed_in? %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary py-md-3 px-md-5 me-3" %>
+          <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary py-md-3 px-md-5 me-3" %>
+        <% else %>
+          <%= link_to "My Workspace", workspace_path, class: "btn btn-primary py-md-3 px-md-5 me-3" %>
+        <% end %>
       </div>
-      <div class="col-md-6 align-content-center">
-        <div>
-          <span>Smart Invoice</span>
-          <h1 class="roboto display-4 text-wrap">
-            Invoice Innovation <br>Solution <br>Generator
-          </h1>
+    </div>
+
+    <div class="row mt-5 g-5">
+      <div class="col-lg-7 align-content-center">
+        <div class="section-title position-relative pb-3 mb-5">
+          <h5 class="fw-bold text-primary text-uppercase">About Us</h5>
+          <h1 class="mb-0">The Best Invoice Service on the Market</h1>
+        </div>
+        <p class="mb-4">Innovating the way businesses manage invoices, our service brings cutting-edge innovation to streamline processes, reduce errors, and improve efficiency. By integrating advanced technologies, we provide smarter, faster, and more reliable invoicing solutions that keep you ahead.</p>
+
+      </div>
+      <div class="col-lg-5 mb-5" style="min-height: 500px;">
+        <div class="position-relative h-100">
+          <%= image_tag "/about.jpg", class: "w-100 h-100 rounded", style: "object-fit: cover" %>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-title text-center position-relative pb-3 mb-2 mt-5 mx-auto" style="max-width: 600px;">
+        <h5 class="fw-bold text-primary text-uppercase">Why Choose Us</h5>
+        <h1 class="mb-0">We Are Here to Grow Your Business Exponentially</h1>
+    </div>
+
+    <div class="row g-5">
+        <div class="col-lg-4">
+            <div class="row g-5">
+                <div class="col-12">
+                    <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fa fa-cubes text-white"></i>
+                    </div>
+                    <h4>Best In Industry</h4>
+                    <p class="mb-0">Leading the industry with unmatched expertise.</p>
+                </div>
+                <div class="col-12">
+                    <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fa fa-award text-white"></i>
+                    </div>
+                    <h4>Award Winning</h4>
+                    <p class="mb-0">Recognized globally for excellence and innovation.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 " style="min-height: 350px;">
+            <div class="position-relative h-100">
+              <%= image_tag "/business-working.jpg", class: "position-absolute w-100 h-100 rounded", style: "object-fit: cover" %>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="row g-5">
+                <div class="col-12">
+                    <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fa fa-users-cog text-white"></i>
+                    </div>
+                    <h4>Professional Staff</h4>
+                    <p class="mb-0">Experienced professionals dedicated to exceptional service.</p>
+                </div>
+                <div class="col-12">
+                    <div class="bg-primary rounded d-flex align-items-center justify-content-center mb-3" style="width: 60px; height: 60px;">
+                        <i class="fa fa-phone-alt text-white"></i>
+                    </div>
+                    <h4>24/7 Support</h4>
+                    <p class="mb-0">Round-the-clock assistance whenever you need it.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="py-5">
+      <div class="section-title text-center position-relative pb-3 mt-5 mb-4 mx-auto" style="max-width: 600px;">
+        <h5 class="fw-bold text-primary text-uppercase">Testimonial</h5>
+        <h1 class="mb-0">What Our Clients Say About Our Digital Services</h1>
+      </div>
+      <div class="owl-carousel testimonial-carousel">
+        <div class="testimonial-item bg-light my-4">
+          <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
+            <%= image_tag "/testimonial-1.jpg", class: "rounded", style: "width: 60px; height: 60px;" %>
+            <div class="ps-4">
+              <h4 class="text-primary mb-1">Beatriz Reichert</h4>
+              <small class="text-uppercase">Retired</small>
+            </div>
+          </div>
+          <div class="pt-4 pb-5 px-5">
+            This system has been a lifesaver for my business. It’s simple, efficient, and helps me stay or ganized without the stress.
+          </div>
+        </div>
+        <div class="testimonial-item bg-light my-4">
+          <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
+            <%= image_tag "/testimonial-2.jpg", class: "rounded", style: "width: 60px; height: 60px;" %>
+              <div class="ps-4">
+                <h4 class="text-primary mb-1">Cristiano Pires</h4>
+                <small class="text-uppercase">Programmer</small>
+              </div>
+          </div>
+          <div class="pt-4 pb-5 px-5">
+            This tool completely changed how I handle invoices. It’s straightforward to use, saves me time, and helps keep everything organized. The automation and tracking features ensure I never miss a payment.
+          </div>
+        </div>
+        <div class="testimonial-item bg-light my-4">
+          <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
+            <%= image_tag "/testimonial-3.jpg", class: "rounded", style: "width: 60px; height: 60px;" %>
+            <div class="ps-4">
+              <h4 class="text-primary mb-1">Mike Darregn</h4>
+              <small class="text-uppercase">Self Employed</small>
+            </div>
+          </div>
+          <div class="pt-4 pb-5 px-5">
+            This invoice system has taken the hassle out of managing payments. It's fast, intuitive, and offers smart features like tracking overdue invoices.
+          </div>
+        </div>
+        <div class="testimonial-item bg-light my-4">
+          <div class="d-flex align-items-center border-bottom pt-5 pb-4 px-5">
+            <%= image_tag "/testimonial-4.jpg", class: "rounded", style: "width: 60px; height: 60px;" %>
+            <div class="ps-4">
+              <h4 class="text-primary mb-1">Natalie Reichert</h4>
+              <small class="text-uppercase">Biologist</small>
+            </div>
+          </div>
+            <div class="pt-4 pb-5 px-5">
+              This invoicing tool is incredibly intuitive and saves me so much time. t’s eco-friendly and aligns perfectly with my values. Highly recommend it to any entrepreneur looking to simplify their workflow!
+            </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="py-5">
+    <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
+      <h5 class="fw-bold text-primary text-uppercase">Team Members</h5>
+      <h1 class="mb-0">Professional Stuffs Ready to Help Your Business</h1>
+    </div>
+    <div class="row g-5 mb-5">
+      <div class="col-lg-4">
+          <div class="team-item bg-light rounded overflow-hidden">
+            <div class="team-img position-relative overflow-hidden">
+            <%= image_tag "/profile-1.jpg.webp", class: "img-fluid w-100" %>
+
+            </div>
+            <div class="text-center py-4">
+              <h4 class="text-primary">Peter Jordan</h4>
+              <p class="text-uppercase m-0">Programmer</p>
+            </div>
+          </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="team-item bg-light rounded overflow-hidden">
+          <div class="team-img position-relative overflow-hidden">
+            <%= image_tag "/profile-3.webp", class: "img-fluid w-100" %>
+          </div>
+          <div class="text-center py-4">
+            <h4 class="text-primary">Mary Jane</h4>
+            <p class="text-uppercase m-0">Customer Service</p>
+          </div>
+        </div>
+      </div class>
+        <div class="col-lg-4">
+          <div class="team-item bg-light rounded overflow-hidden">
+            <div class="team-img position-relative overflow-hidden">
+              <%= image_tag "/profile-2.webp", class: "img-fluid w-100" %>
+            </div>
+            <div class="text-center py-4">
+              <h4 class="text-primary">David Nolan's</h4>
+              <p class="text-uppercase m-0">Marketing</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

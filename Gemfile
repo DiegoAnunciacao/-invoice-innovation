@@ -27,8 +27,8 @@ gem 'omniauth-google-oauth2'
 
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 
-# gem 'wicked_pdf'
-# gem 'wkhtmltopdf-binary'
+gem 'wicked_pdf'
+gem 'wkhtmltopdf-binary'
 
 gem 'sassc-rails'
 

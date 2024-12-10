@@ -1,5 +1,4 @@
 source "https://rubygems.org"
-ruby "~> 3.1.2"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.2.2"
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
@@ -31,6 +30,8 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+gem 'uglifier'
+gem 'sassc-rails'
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"

@@ -29,7 +29,7 @@ gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary', group: :production
+gem 'wkhtmltopdf-binary'
 
 
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]

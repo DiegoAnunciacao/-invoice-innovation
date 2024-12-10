@@ -35,20 +35,20 @@
       <table>
         <thead>
           <tr>
-            <td>Invoice ID</td>
-            <td>Client Name</td>
-            <td>Date</td>
-            <td>Status</td>
+            <td class="text-start">Invoice ID</td>
+            <td class="text-start">Client Name</td>
+            <td class="text-start">Email</td>
+            <td class="text-end">Date</td>
           </tr>
         </thead>
 
           <tbody>
             <% current_user.invoices.order(created_at: :desc).limit(8).each do |invoice| %>
               <tr onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;">
-                <td><%= invoice.id %></td>
-                <td><%= invoice.client.name.titleize %></td>
-                <td><%= invoice.created_at.strftime("%d/%m/%Y") %></td>
-                <td><span class="status delivered">Submitted</span></td>
+                <td class="text-start"><%= invoice.id %></td>
+                <td class="text-start"><%= invoice.client.name.titleize %></td>
+                <td class="text-start"><%= invoice.client.email %></td>
+                <td class="text-end"><%= invoice.created_at.strftime("%d/%m/%Y") %></td>
               </tr>
             <% end %>
           </tbody>

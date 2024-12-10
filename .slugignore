@@ -1,4 +1,6 @@
 *.pdf
 *.ttf
 *.otf
-public/assets/*
+public/*
+/log
+/tmp

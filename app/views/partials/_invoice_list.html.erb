@@ -21,8 +21,8 @@
         <tr>
           <td>Invoice ID</td>
           <td class="text-start">Client Name</td>
+          <td class="text-start">Email</td>
           <td class="text-end">Date</td>
-          <td>Status</td>
           <td>Actions</td>
         </tr>
       </thead>
@@ -32,14 +32,14 @@
           <tr>
             <td onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;"><%= invoice.id %></td>
             <td class="text-start" onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;"><%= invoice.client.name.titleize %></td>
+            <td class="text-start"><span onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;"><%= invoice.client.email %></span></td>
             <td class="text-end" onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;"><%= invoice.created_at.strftime("%d/%m/%Y") %></td>
-            <td><span class="status delivered" onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;">Submitted</span></td>
             <td class="no-hover">
               <ul class="list-inline mb-0">
                 <li class="list-inline-item">
                   <%= link_to "",  edit_invoice_path(invoice), class: "fa-regular fa-pen-to-square badge-soft-primary", title: "Edit Invoice" %>
 
-                  <%= link_to "", invoice_path(invoice), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this invoice? This action cannot be undone."}, class: "fa-regular fa-circle-xmark badge-soft-danger", title: "Delete Invoice" %>
+                  <%= link_to "", invoice_path(invoice), data: {turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this invoice? This action cannot be undone."}, class: "px-4 fa-regular fa-circle-xmark badge-soft-danger", title: "Delete Invoice" %>
 
                   <%= link_to "View PDF", invoice_path(invoice, format: :pdf), target: "_blank", class: "btn btn-primary" %>
                 </li>

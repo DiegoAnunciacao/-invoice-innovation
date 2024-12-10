@@ -7,7 +7,7 @@ class ClientsController < ApplicationController
     @clients = current_user.clients.where(status: true)
     if params[:query].present?
       sql_subquery = "name ILIKE :query OR email ILIKE :query"
-      @clients = current_user.clients.where(sql_subquery, query: "%#{params[:query]}%")
+      @clients = current_user.clients.where(sql_subquery, status: true, query: "%#{params[:query]}%")
     end
   end
 

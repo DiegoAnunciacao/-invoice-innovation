@@ -28,7 +28,6 @@ gem 'omniauth-google-oauth2'
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 
 gem 'wicked_pdf'
-gem 'wkhtmltopdf-binary'
 
 gem 'sassc-rails'
 
@@ -69,11 +68,15 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem 'wkhtmltopdf-binary'
 
   # Highlight the fine-grained location where an error occurred [https://github.com/ruby/error_highlight]
   gem "error_highlight", ">= 0.4.0", platforms: [ :ruby ]
 end
 
+group :production do
+  gem 'wkhtmltopdf-heroku', '3.0.0'
+end
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
   gem "capybara"

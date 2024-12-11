@@ -1,6 +1,5 @@
 *.pdf
 *.ttf
 *.otf
-public/*
 /log
 /tmp

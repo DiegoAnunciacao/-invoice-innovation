@@ -10,25 +10,38 @@
 
 puts "creating Users, Clients, Invoices and Services"
 
-10.times do |u|
+client_name = [
+  "Ana Silva", "João Souza", "Maria Oliveira", "Carlos Pereira", "Lucas Costa",
+  "Fernanda Santos", "Mariana Rodrigues", "Ricardo Almeida", "Beatriz Nascimento", "Gabriel Lima",
+  "Camila Carvalho", "Pedro Ribeiro", "Larissa Martins", "Rafael Rocha", "Julia Barbosa",
+  "Tiago Dias", "Sofia Andrade", "Leonardo Monteiro", "Isabela Cardoso", "Felipe Gomes",
+  "Carolina Santos", "André Almeida", "Juliana Souza", "Henrique Pereira", "Bianca Rocha",
+  "Mateus Ribeiro", "Patrícia Carvalho", "Eduardo Monteiro", "Clara Martins", "Roberto Cardoso",
+  "Sara Nascimento", "Daniel Oliveira", "Marcela Dias", "Rodrigo Gomes", "Larissa Costa"
+]
+
+client_email = []
+
+1.times do |u|
   user = User.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.unique.email,
+    first_name: "Carter",
+    last_name: "Anunciacao",
+    email: "carterfotografia@gmail.com",
     password: "teste123",
-    phone: Faker::PhoneNumber,
-    company_name: Faker::Company.name,
-    company_address: Faker::Address.street_address,
+    phone: "3530892338481",
+    company_name: "Carter Photography",
+    company_address: "32 Ard Cluain, Main Street, Clonee, Co. Meath, Ireland",
     company_number: Faker::Company.brazilian_company_number,
     image_logo: Faker::Avatar.image
   )
 
-  20.times do |c|
+  client_name.each do |n|
+    email = n.downcase.gsub(" ", ".") + ["@gmail.com", "@hotmail.com", "@yahoo.com"].sample
     client = Client.create!(
-      name: Faker::Name.name,
+      name: n,
       address: Faker::Address.street_address,
       county: Faker::Address.city,
-      email: Faker::Internet.unique.email,
+      email: email,
       postcode: Faker::Address.postcode,
       phone: Faker::PhoneNumber.phone_number,
       user: user

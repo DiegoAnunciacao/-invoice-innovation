@@ -1,11 +1,9 @@
 <div class="main" data-sidebar-target="toggle" data-controller="sidebar">
   <%= render 'partials/topbar' %>
   <div class="container">
-    <div>
-      <div id="background-home"class="d-flex flex-column align-items-center justify-content-center" style="background-image: url('carousel-1.jpg'); background-size: cover; height: 75vh;">
-
+    <div id="background-home" class="d-flex flex-column align-items-center justify-content-center" style="background: linear-gradient(rgba(0, 0, 0, 0.58), rgba(255, 255, 255, 0.4)), url('carousel-1.jpg'); background-size: cover; height: 75vh;">
       <div class="p-3 text-center" style="max-width: 900px;">
-        <h1 class="display-1 text-white mb-md-4">Invoice Innovation Solution</h1>
+        <h1 id="title-home" class="text-white mb-md-4" style="font-size: 5rem;">Invoice <br>Innovation Solution</h1>
         <% unless user_signed_in? %>
           <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary py-md-3 px-md-5 me-3" %>
           <%= link_to "Sign In", new_user_session_path, class: "btn btn-primary py-md-3 px-md-5 me-3" %>

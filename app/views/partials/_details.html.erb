@@ -1,8 +1,7 @@
-<main class="d-flex flex-column text-center">
-    <div class="mt-5">
-      <h5 class="user-name"><%= @client.name.titleize %></h5>
-
-      <h6 class="user-email"><%= @client.email %></h6>
+<div class="details row align-items-center justify-content-center text-center">
+  <div class="col-6">
+    <h5>Name</h5>
+    <p class="mt-2"><%= @client.name.titleize %></p>
 
     <div class="">
       <h5 class="mb-2">Email</h5>
@@ -28,9 +27,9 @@
       <h5 class="mb-2">Phone Number</h5>
       <p><%= client.phone.squish %></p>
     </div>
+    <div class="about">
+      <%= link_to "",  edit_client_path(client), class: "fa-regular fa-pen-to-square badge-soft-primary", title: "Edit Client" %>
+      <%= link_to "", deactivate_client_path(client), data: { turbo_method: :patch, turbo_confirm: "Are you sure you want to delete this client? This action cannot be undone."}, class: "fa-regular fa-circle-xmark badge-soft-danger" %>
+    </div>
   </div>
-  <div class="about">
-    <%= link_to "",  edit_client_path(client), class: "fa-regular fa-pen-to-square badge-soft-primary", title: "Edit Client" %>
-    <%= link_to "", deactivate_client_path(client), data: { turbo_method: :patch, turbo_confirm: "Are you sure you want to delete this client? This action cannot be undone."}, class: "fa-regular fa-circle-xmark badge-soft-danger" %>
-  </div>
-</main>
+</div>

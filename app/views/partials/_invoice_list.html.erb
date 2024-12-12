@@ -31,7 +31,7 @@
         <% if @invoices.any? %>
           <% current_user.invoices.order(created_at: :desc).each do |invoice| %>
             <tr>
-              <td onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;"><%= invoice.id %></td>
+              <td onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;">#002<%= invoice.id %></td>
               <td class="text-start" onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;"><%= invoice.client.name.titleize %></td>
               <td class="text-start"><span onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;"><%= invoice.client.email %></span></td>
               <td class="text-end" onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;"><%= invoice.created_at.strftime("%d/%m/%Y") %></td>

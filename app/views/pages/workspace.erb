@@ -45,7 +45,7 @@
           <tbody>
             <% current_user.invoices.order(created_at: :desc).limit(8).each do |invoice| %>
               <tr onclick="location.href='<%= invoice_path(invoice) %>'" style="cursor: pointer;">
-                <td class="text-start"><%= invoice.id %></td>
+                <td class="text-start">#002<%= invoice.id %></td>
                 <td class="text-start"><%= invoice.client.name.titleize %></td>
                 <td class="text-start"><%= invoice.client.email %></td>
                 <td class="text-end"><%= invoice.created_at.strftime("%d/%m/%Y") %></td>
@@ -61,7 +61,7 @@
         <h2>Recent Clients</h2>
         <%= link_to "New Client", new_client_path, class: "btn btn-primary" %>
       </div>
-        <% current_user.clients.order(created_at: :desc).limit(8).each do |client| %>
+        <% current_user.clients.where(status: true).order(created_at: :desc).limit(8).each do |client| %>
         <table>
             <tr onclick="location.href='<%= client_path(client)%>'" style="cursor: pointer;">
               <td>

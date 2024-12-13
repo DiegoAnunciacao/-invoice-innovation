@@ -20,7 +20,27 @@ client_name = [
   "Sara Nascimento", "Daniel Oliveira", "Marcela Dias", "Rodrigo Gomes", "Larissa Costa"
 ]
 
-client_email = []
+painting_services = [
+  "Pintura residencial externa",
+  "Pintura residencial interna",
+  "Pintura comercial externa",
+  "Pintura comercial interna",
+  "Aplicação de textura em paredes",
+  "Pintura de teto com acabamento liso",
+  "Pintura decorativa com stencil",
+  "Pintura com efeito ombré",
+  "Reparo e pintura de paredes com mofo",
+  "Selagem e pintura de superfícies porosas",
+  "Pintura à base de óleo para superfícies metálicas",
+  "Pintura com tinta epóxi para pisos",
+  "Pintura de portões metálicos",
+  "Pintura de grades de janelas",
+  "Pintura de fachadas de prédios",
+  "Pintura com tinta impermeabilizante",
+  "Pintura de azulejos de cozinha",
+  "Pintura de azulejos de banheiro"
+]
+
 
 1.times do |u|
   user = User.create!(
@@ -49,14 +69,15 @@ client_email = []
 
       2.times do |i|
         invoice = Invoice.new(
-        notes: "this is a note",
+        notes: "",
         vat: rand(12..20),
         client: client
         )
 
         2.times do |s|
+          description = painting_services.sample
           Service.create!(
-            description: "This is a description",
+            description: description,
             amount: rand(10..1000),
             invoice: invoice
           )

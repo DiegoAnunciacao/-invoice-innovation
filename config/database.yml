@@ -80,6 +80,5 @@ test:
 #
 production:
   <<: *default
-  database: invoice_innovation_production
-  username: invoice_innovation
-  password: <%= ENV["INVOICE_INNOVATION_DATABASE_PASSWORD"] %>
+  url: <%= ENV["DATABASE_URL"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
